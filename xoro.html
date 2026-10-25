@@ -3,23 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#05060d">
 <title>Xoro</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23070a1a'/%3E%3Cpath d='M26 24L74 76' stroke='%234f8cff' stroke-width='13' stroke-linecap='round'/%3E%3Cpath d='M74 24L56 43.5M44 56.5L26 76' stroke='%232fe0c0' stroke-width='13' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f3f5fb;--side:#fff;--card:#e9ebf3;--pop:#fff;--text:#12141c;--mute:#6c7080;--acc:#2f4fe0;--accbg:#dde5ff;--line:#d6d9e4;--grad:radial-gradient(120% 70% at 50% 115%,#c9d8ff 0%,#f3f5fb 70%);
+:root{--fs:16px;--bg:#f3f5fb;--side:#fff;--card:#e9ebf3;--pop:#fff;--text:#12141c;--mute:#6c7080;--acc:#2f4fe0;--accbg:#dde5ff;--line:#d6d9e4;--grad:radial-gradient(120% 70% at 50% 115%,#c9d8ff 0%,#f3f5fb 70%);
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#05060d;--side:#000;--card:#1d1d21;--pop:#17171b;--text:#f1f1f4;--mute:#8d90a0;--acc:#3556ea;--accbg:#12235e;--line:#2a2b33;--grad:radial-gradient(120% 75% at 50% 115%,#1b3190 0%,#0b1440 45%,#05060d 80%)}}
 :root[data-theme="dark"]{--bg:#05060d;--side:#000;--card:#1d1d21;--pop:#17171b;--text:#f1f1f4;--mute:#8d90a0;--acc:#3556ea;--accbg:#12235e;--line:#2a2b33;--grad:radial-gradient(120% 75% at 50% 115%,#1b3190 0%,#0b1440 45%,#05060d 80%)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;margin:0}
-body{background:var(--bg);color:var(--text);font:16px/1.55 Manrope,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
+body{background:var(--bg);color:var(--text);font:var(--fs)/1.55 Manrope,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
-input{font:inherit;color:var(--text)}
+input,textarea{font:inherit;color:var(--text)}
 svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
-#app{height:100%;display:flex}
+.lg{display:block}
+.lg svg{width:100%;height:100%;display:block}
+#app{height:100dvh;display:flex}
 #side{background:var(--side);display:flex;flex-direction:column;padding:12px 10px;z-index:20;width:300px;max-width:88vw}
 .sh{display:flex;align-items:center;justify-content:space-between;padding:4px 8px 14px;font-family:Unbounded,Manrope,sans-serif;font-size:20px;font-weight:700}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .lg{width:34px;height:34px}
 .nav button{display:flex;align-items:center;gap:16px;width:100%;text-align:left;padding:13px 14px;border-radius:24px;font-weight:600}
 .nav button.hl{background:var(--card)}
 .nav button:hover{background:var(--card)}
@@ -27,12 +33,10 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stro
 #sq{display:none;margin:4px 4px 8px;width:calc(100% - 8px);height:44px;border-radius:22px;border:0;background:var(--card);padding:0 16px;outline:0}
 .sec{color:var(--mute);padding:14px 14px 6px;font-size:13px;font-weight:800}
 #list{flex:1;overflow-y:auto}
-.it{display:flex;align-items:center;padding:10px 8px 10px 14px;border-radius:16px;cursor:pointer;gap:4px}
+.it{display:flex;align-items:center;padding:8px 6px 8px 14px;border-radius:16px;cursor:pointer;gap:4px}
 .it:hover,.it.on{background:var(--card)}
 .it span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.it button{color:var(--mute);opacity:.45;padding:4px;display:none}
-.it:hover button,.it button.p{display:block}
-.it button.p{opacity:1;color:var(--acc)}
+.it button{color:var(--mute);padding:4px 10px;font-size:20px;font-weight:800}
 .plan{width:100%;background:var(--acc);color:#fff;border-radius:22px;padding:12px;font-weight:800;margin:8px 0}
 .foot{display:flex;align-items:center;gap:10px;padding:4px 6px 2px}
 .foot b{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
@@ -47,7 +51,7 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stro
 #mbtn b{font-weight:600;color:var(--mute)}
 .dot{width:26px;height:26px;border-radius:9px;display:grid;place-items:center;font-size:14px;color:#fff;flex:none}
 #menu{display:none;position:absolute;left:14px;top:62px;width:min(380px,94vw);background:var(--pop);border:1px solid var(--line);border-radius:26px;padding:14px;z-index:30;box-shadow:0 16px 50px #0007}
-#menu.open{display:block}
+#menu.open,#pm.open{display:block}
 .mh{color:var(--mute);font-size:13px;font-weight:800;padding:0 4px 10px}
 .mc{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:12px;border-radius:20px;border:1.5px solid transparent;margin-bottom:6px;background:var(--card)}
 .mc.on{border-color:var(--acc);background:var(--accbg)}
@@ -60,59 +64,101 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stro
 .bars i{width:5px;height:14px;border-radius:3px;background:var(--line)}
 .bars i.f{background:var(--acc)}
 .seg{display:flex;gap:4px;background:var(--card);border-radius:20px;padding:4px;margin-top:8px}
-.seg button{flex:1;padding:9px;border-radius:16px;font-weight:700;color:var(--mute);font-size:15px}
+.seg button{flex:1;padding:9px 4px;border-radius:16px;font-weight:700;color:var(--mute);font-size:15px}
 .seg button.on{background:var(--acc);color:#fff}
+#pm{display:none;position:absolute;left:12px;bottom:calc(92px + env(safe-area-inset-bottom,0px));width:min(430px,calc(100% - 24px));max-height:64vh;overflow-y:auto;background:var(--pop);border:1px solid var(--line);border-radius:24px;padding:8px 10px 14px;z-index:30;box-shadow:0 12px 40px #0007}
+#pm .mh{padding:12px 6px 8px}
+#pm .rw{display:flex;flex-wrap:wrap;gap:8px}
+#pm .rw button{background:var(--card);border-radius:16px;padding:9px 13px;font-weight:600;font-size:14.5px;text-align:left}
+#pm .rw button.on{background:var(--acc);color:#fff}
+.gi{max-width:420px;border-radius:20px;overflow:hidden}
+.tw{overflow-x:auto;margin:8px 0}
+.msg table{border-collapse:collapse;min-width:100%}
+.msg th,.msg td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+.msg th{background:var(--card)}
 #tabs{display:flex;gap:4px;background:var(--card);border-radius:24px;padding:4px}
 #tabs button{padding:8px 18px;border-radius:20px;color:var(--mute);font-family:Unbounded,Manrope,sans-serif;font-size:13px;font-weight:500}
 #tabs button.on{background:var(--bg);color:var(--text)}
-#main,#imgp{flex:1;overflow-y:auto;padding:8px 16px;display:flex;flex-direction:column;width:100%;max-width:820px;margin:0 auto}
+#main,#imgp,#bldp{flex:1;overflow-y:auto;padding:8px 16px;display:flex;flex-direction:column;width:100%;max-width:820px;margin:0 auto}
+#imgp,#bldp{display:none}
 .empty{margin:auto;text-align:center}
-.empty svg{width:76px;height:76px}
+.empty .lg{width:84px;height:84px;margin:0 auto}
 .empty h1{font-family:Unbounded,Manrope,sans-serif;font-weight:500;font-size:clamp(24px,4.2vw,38px);margin:14px 0 0;letter-spacing:-.5px}
-.empty p{font-family:Unbounded,Manrope,sans-serif;color:var(--mute);font-size:clamp(18px,3vw,26px);margin:6px 0 0}
+.empty p{color:var(--mute);margin:6px 0 0}
 .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
 .chips button{background:var(--card);border-radius:18px;padding:12px 16px;font-weight:600;font-size:15px}
-.msg{max-width:88%;margin:8px 0;padding:11px 16px;border-radius:20px;white-space:pre-wrap;word-wrap:break-word}
-.msg.u{align-self:flex-end;background:var(--card)}
+.msg{max-width:88%;margin:8px 0;padding:11px 16px;border-radius:20px;word-wrap:break-word;overflow-wrap:anywhere}
+.msg.u{align-self:flex-end;background:var(--card);white-space:pre-wrap}
+.msg.u img{display:block;max-width:180px;max-height:180px;border-radius:14px;margin-bottom:8px}
 .msg.a{align-self:flex-start;padding-left:0;max-width:100%}
-.cp{display:block;color:var(--mute);font-size:13px;margin-top:6px;font-weight:600}
+.msg.a.er{color:#ff8a8a}
+.msg ul,.msg ol{margin:6px 0;padding-left:22px}
+.msg pre{background:var(--card);padding:12px;border-radius:14px;overflow-x:auto;margin:8px 0}
+.msg code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--card);padding:1px 6px;border-radius:6px}
+.msg pre code{background:none;padding:0}
+.msg h4{margin:10px 0 4px;font-size:1.05em}
+.msg a{color:var(--acc)}
+.msg .l{min-height:1em}
+.acts{display:flex;gap:14px;margin-top:6px}
+.acts button{color:var(--mute);font-size:13px;font-weight:700}
 .ty{display:flex;align-items:center;gap:10px;font-weight:700}
-.ty svg{width:30px;height:30px;animation:sp 2.4s linear infinite,pl 1.4s ease-in-out infinite}
+.ty .lg{width:30px;height:30px;animation:sp 2.4s linear infinite,pl 1.4s ease-in-out infinite}
 .ty span{background:linear-gradient(90deg,var(--mute) 30%,var(--text) 50%,var(--mute) 70%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 1.6s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 @keyframes pl{0%,100%{opacity:.55;scale:.85}50%{opacity:1;scale:1.12}}
 @keyframes sh{to{background-position:-200% 0}}
+#attach{width:calc(100% - 20px);max-width:780px;margin:0 auto}
+.chip2{display:inline-flex;align-items:center;gap:6px;background:var(--card);border-radius:16px;padding:6px 8px;margin-bottom:6px}
+.chip2 img{width:52px;height:52px;border-radius:10px;object-fit:cover}
+.chip2 button{padding:6px 10px;font-weight:800;color:var(--mute)}
 .dock{width:calc(100% - 20px);max-width:780px;margin:6px auto 14px;background:var(--card);border-radius:34px;padding:10px 12px;display:flex;align-items:flex-end;gap:6px}
-textarea{flex:1;border:0;outline:0;resize:none;background:none;color:var(--text);font:inherit;font-size:18px;max-height:160px;padding:10px 6px}
+textarea{flex:1;border:0;outline:0;resize:none;background:none;font-size:18px;max-height:160px;padding:10px 6px}
 .go{width:48px;height:48px;border-radius:50%;background:var(--acc);color:#fff;display:grid;place-items:center;flex:none}
 .go:disabled{opacity:.5}
-#imgp{display:none}
-.ig{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin:14px 0}
-.ig div{border-radius:20px;overflow:hidden;background:var(--card)}
-.ig div i{display:block;aspect-ratio:1}
-.ig div span{display:block;padding:10px 12px;font-size:14px;color:var(--mute)}
-.note{color:var(--mute);font-size:14px;text-align:center;margin:auto}
-#soon{margin:auto;text-align:center;color:var(--mute);display:none}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 10px}
+.opts button{background:var(--card);border-radius:16px;padding:8px 14px;font-weight:700;font-size:14px;color:var(--mute)}
+.opts button.on{background:var(--acc);color:#fff}
+.ig{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin:6px 0 14px}
+.ic2{border-radius:20px;overflow:hidden;background:var(--card)}
+.ph{position:relative;background:linear-gradient(110deg,var(--card) 30%,var(--line) 50%,var(--card) 70%);background-size:200% 100%;animation:sh 1.6s linear infinite}
+.ph.ok{animation:none;background:none}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s}
+.ph.ok img{opacity:1}
+.ph.bad::after{content:"Не получилось. Нажмите «Ещё вариант»";position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:14px;color:var(--mute);font-size:14px}
+.ic2 span{display:block;padding:10px 12px 4px;font-size:14px;color:var(--mute)}
+.ia{display:flex;gap:4px;padding:2px 6px 8px}
+.ia button{padding:6px 10px;font-size:13px;font-weight:700;color:var(--acc)}
+.note{color:var(--mute);font-size:14px;text-align:center;margin:auto;max-width:420px}
+.bcard{background:var(--card);border-radius:22px;padding:12px;margin:8px 0}
+.bcard iframe{width:100%;height:440px;border:0;border-radius:14px;background:#fff}
+.bcard .ia{padding:8px 0 0}
 #shade{position:fixed;inset:0;background:#0007;z-index:15;display:none}
 #mod{position:fixed;inset:0;background:#000a;z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
 #mod.open{display:flex}
 .card{background:var(--pop);border:1px solid var(--line);border-radius:28px;padding:22px;width:min(460px,100%);max-height:92vh;overflow-y:auto}
 .card h3{font-family:Unbounded,Manrope,sans-serif;font-weight:500;margin:0 0 6px}
 .card label{display:block;color:var(--mute);font-size:13px;font-weight:800;margin:14px 0 6px}
-.card input{width:100%;height:46px;border-radius:16px;border:0;background:var(--card);padding:0 14px;outline:0}
+.card input,.card textarea{width:100%;border-radius:16px;border:0;background:var(--card);padding:0 14px;outline:0;height:46px;font-size:16px}
+.card textarea{height:92px;padding:12px 14px;resize:none}
 .card p{color:var(--mute);font-size:14px;margin:6px 0}
 .btn{width:100%;padding:13px;border-radius:20px;background:var(--acc);color:#fff;font-weight:800;margin-top:16px}
 .btn.g{background:var(--card);color:var(--text);margin-top:8px}
-#toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 18px;border-radius:20px;font-weight:700;z-index:60;display:none}
-#auth{position:fixed;inset:0;z-index:80;background:var(--grad);background-color:var(--bg);display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto}#auth.open{display:flex}
+.btn.r{color:#ff6b6b}
+#auth{position:fixed;inset:0;z-index:80;background:var(--grad);background-color:var(--bg);display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+#auth.open{display:flex}
+#toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 18px;border-radius:20px;font-weight:700;z-index:90;display:none;max-width:90vw;text-align:center}
 @media(min-width:800px){#side{flex:none;transition:margin .25s}#app.collapsed #side{margin-left:-300px}#app:not(.collapsed) #burger{display:none}}
 @media(max-width:799px){#side{position:fixed;top:0;bottom:0;left:0;transform:translateX(-100%);transition:transform .25s;padding-top:calc(12px + env(safe-area-inset-top,0px))}#side.open{transform:none}#shade.open{display:block}#tabs{order:5;width:100%;justify-content:center}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="xg" gradientUnits="userSpaceOnUse" x1="10" y1="10" x2="90" y2="90"><stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#9b6bff"/></linearGradient>
+<linearGradient id="xg2" gradientUnits="userSpaceOnUse" x1="90" y1="10" x2="10" y2="90"><stop offset="0" stop-color="#2fe0c0"/><stop offset="1" stop-color="#4f8cff"/></linearGradient>
+</defs></svg>
 <div id="app">
 <aside id="side">
- <div class="sh"><span>Xoro</span><button class="ic" id="fold" aria-label="Свернуть"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 4v16"/></svg></button></div>
+ <div class="sh"><span class="brand"><i class="lg" data-logo></i>Xoro</span><button class="ic" id="fold" aria-label="Свернуть"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 4v16"/></svg></button></div>
  <div class="nav">
   <button class="hl" id="new"><svg class="i" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>Новый чат</button>
   <button id="srch"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Поиск по чатам</button>
@@ -131,78 +177,156 @@ textarea{flex:1;border:0;outline:0;resize:none;background:none;color:var(--text)
   <button class="ic" id="burger" aria-label="Меню"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
   <button id="mbtn"></button>
   <span class="sp"></span>
-  <nav id="tabs"><button class="on" data-t="ask">Спросить</button><button data-t="img">Imagine</button><button data-t="build">Сборка</button></nav>
+  <nav id="tabs"><button class="on" data-t="ask">Спросить</button><button data-t="build">Сборка</button></nav>
   <span class="sp"></span>
   <button class="ic" id="ghost" aria-label="Приватный чат"><svg class="i" viewBox="0 0 24 24"><circle cx="7" cy="16" r="3"/><circle cx="17" cy="16" r="3"/><path d="M10 16h4M5 12l2-6h10l2 6M3 12h18"/></svg></button>
   <div class="av" id="av2"></div>
  </div>
  <div id="menu"></div>
+ <div id="pm"></div>
  <main id="main"></main>
- <div id="imgp"><div class="ig" id="ig"></div><p class="note" id="inote">Опишите картинку внизу. Это демо-режим: рисуется абстрактный арт по вашему тексту, настоящий генератор подключим позже.</p></div>
- <div id="soon"><h2 id="soonT"></h2><p>Скоро появится в Xoro</p></div>
+  <div id="bldp"><p class="note" id="bnote">Опишите сайт или приложение внизу, например «лендинг кофейни» или «калькулятор чаевых». Xoro соберёт готовую страницу.</p><div id="bres"></div></div>
+ <div id="attach"></div>
  <div class="dock" id="dock">
   <button class="ic" id="plus" aria-label="Добавить"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
   <textarea id="inp" rows="1" placeholder="Спросить Xoro"></textarea>
-  <button class="ic" id="mic" aria-label="Микрофон"><svg class="i" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></button>
+  <button class="ic" id="mic" aria-label="Голосовой ввод"><svg class="i" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></button>
   <button class="go" id="go" aria-label="Отправить"><svg class="i" id="goI" viewBox="0 0 24 24"></svg></button>
  </div>
 </section>
 </div>
+<input type="file" id="file" accept="image/*" hidden><input type="file" id="cam" accept="image/*" capture="environment" hidden><input type="file" id="doc" accept=".pdf,.txt,.md,.csv,.json,.html,.css,.js,.py,.xml,.log,text/*,application/pdf" hidden>
 <div id="shade"></div><div id="mod"></div><div id="toast"></div><div id="auth"></div>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script>
 (function(){
-var FB_CFG={apiKey:"AIzaSyCYRBk6DWQSmRy_hCXw5ufz3mqsmpzC6P8",authDomain:"xoro-10ddf.firebaseapp.com",projectId:"xoro-10ddf",appId:"1:1010481714163:web:400fdfa740259ce9a0b886"}; /* сюда вставляется firebaseConfig */
-var gReady=false;
-var AI={url:"https://xoro-ai.aliserkojsbaev1.workers.dev",key:"",model:"gemini-3.5-flash-lite"}; /* ключ хранится в Cloudflare Worker */
 var $=function(i){return document.getElementById(i)};
-var cfg={name:"",asked:false,theme:"auto",url:"https://api.groq.com/openai/v1/chat/completions",key:"",model:"llama-3.3-70b-versatile"};
-var job=null;
-var DEF=JSON.parse(JSON.stringify(cfg)),user=null,authMode="login";
-var chats=[],cur=null,ghost=false,mi=0,lvl="Быстро",busy=false,tab="ask",imgs=[];
+var FB_CFG={apiKey:"AIzaSyCYRBk6DWQSmRy_hCXw5ufz3mqsmpzC6P8",authDomain:"xoro-10ddf.firebaseapp.com",projectId:"xoro-10ddf",appId:"1:1010481714163:web:400fdfa740259ce9a0b886"};
+var gReady=false;
+var AI={url:"https://xoro-ai.aliserkojsbaev1.workers.dev",model:"gemini-3.5-flash-lite"};
+var DEF={name:"",theme:"auto",fs:16,mi:0,lvl:"Быстро",instr:"",anim:true,md:0,ch:0,fm:0,ah:false,mem:[]};
+var cfg=JSON.parse(JSON.stringify(DEF)),user=null,authMode="login",chats=[],cur=null,ghost=false,busy=false,job=null,tab="ask",att=null,dc=null,tool=null,imgMode=false,rec=null,aid=null;
 var M=[
- {n:"Авто",d:"Сам подберу модель под задачу",t:"Умный выбор",ic:"✦",c:"#4f8cff,#9b6bff",p:0},
- {n:"3.1 Xorix",d:"Мгновенные ответы на каждый день",t:"Быстрая",ic:"⚡",c:"#2fe0c0,#4f8cff",p:1},
- {n:"3.5 Xorium",d:"Глубокие рассуждения и анализ",t:"Баланс",ic:"◆",c:"#9b6bff,#ff6bd5",p:2},
- {n:"4 Xora",d:"Самые сложные задачи и проекты",t:"Максимум",ic:"✺",c:"#ff9b4f,#ff4f6b",p:3}];
-var TY='<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" style="color:var(--acc)"><circle cx="50" cy="50" r="34"/><path d="M34 34l32 32M66 34L34 66"/></svg>';
-var LOGO='<svg viewBox="0 0 100 100" fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f8cff"/><stop offset=".5" stop-color="#9b6bff"/><stop offset="1" stop-color="#2fe0c0"/></linearGradient></defs><circle cx="50" cy="50" r="34"/><path d="M34 34l32 32M66 34L34 66"/></svg>';
+ {n:"Авто",d:"Сам подберу стиль под задачу",t:"Умный выбор",ic:"✦",c:"#4f8cff,#9b6bff",p:0,mt:1500,s:""},
+ {n:"3.1 Xorix",d:"Мгновенные ответы на каждый день",t:"Быстрая",ic:"⚡",c:"#2fe0c0,#4f8cff",p:1,mt:700,s:"Отвечай кратко и быстро."},
+ {n:"3.5 Xorium",d:"Глубокие рассуждения и анализ",t:"Баланс",ic:"◆",c:"#9b6bff,#ff6bd5",p:2,mt:1200,s:"Отвечай сбалансированно: с объяснением и примерами."},
+ {n:"4 Xora",d:"Самые сложные задачи и проекты",t:"Максимум",ic:"✺",c:"#ff9b4f,#ff4f6b",p:3,mt:1500,s:"Рассуждай глубоко: структурируй ответ и разбирай сложные задачи шаг за шагом."}];
+var CH=[
+ {n:"Xoro",s:""},
+ {n:"Шутник",s:"Сегодня ты в образе Шутника: больше юмора, мемов и лёгкого сарказма, но по делу и без обид."},
+ {n:"Друг",s:"Сегодня ты в образе Друга: общайся тепло, неформально и поддерживай."},
+ {n:"Наставник",s:"Сегодня ты в образе Наставника: спокойно, чётко, по шагам, мотивируй."},
+ {n:"Эксперт",s:"Сегодня ты в образе Эксперта: серьёзно, точно и структурированно, без шуток."}];
+var MD=[
+ {n:"Обычный",s:""},
+ {n:"Коротко",s:"Режим «Коротко»: давай только ответ, без объяснений."},
+ {n:"Объясни",s:"Режим «Объясни»: объясняй подробно и простыми словами, с примерами."},
+ {n:"Учитель",s:"Режим «Учитель»: объясни тему, а потом задай пользователю пару проверочных вопросов."},
+ {n:"Давай вместе",s:"Режим «Давай вместе»: не выдавай готовый ответ сразу, а помогай дойти до решения самому: наводящие вопросы и подсказки по шагам."}];
+var FM=[{n:"Обычный",s:""},{n:"Дружеский",s:"Говори на «ты», дружески и неформально."},{n:"Официальный",s:"Пиши официально и вежливо, без сленга и эмодзи."}];
+var TL=[
+ {id:"better",n:"✨ Сделай лучше",ph:"Вставьте текст, который улучшить",s:"Задача: улучши присланный текст (стиль, ясность, грамматика), сохрани смысл и язык. Сначала дай улучшенный вариант, затем одной-двумя строками скажи, что изменил."},
+ {id:"parse",n:"🔍 Разбор сообщения",ph:"Вставьте сообщение для разбора",s:"Задача: проанализируй присланное сообщение: что человек имеет в виду, какой тон и подтекст, и предложи 2-3 варианта ответа."},
+ {id:"critic",n:"🧐 Критик",ph:"Опишите идею или вставьте текст",s:"Задача: ты Критик. Найди ошибки и слабые места по пунктам, конструктивно, затем предложи, как улучшить."},
+ {id:"debate",n:"⚔️ Дебаты",ph:"Напишите своё мнение, и я поспорю",s:"Задача: Дебаты. Займи позицию, противоположную мнению пользователя, и спорь аргументированно и уважительно. В конце кратко подведи итог."},
+ {id:"brain",n:"💡 Мозговой штурм",ph:"Тема для идей",s:"Задача: мозговой штурм. Выдай как можно больше разных идей списком (не меньше 10), от обычных до необычных, без оценки."},
+ {id:"e5",n:"👶 Как 5-летнему",ph:"Что объяснить?",s:"Задача: объясни тему так, чтобы понял пятилетний ребёнок: простые слова и сравнения."},
+ {id:"sch",n:"🎒 Как школьнику",ph:"Что объяснить?",s:"Задача: объясни тему на уровне школьника, простыми словами и с примерами."},
+ {id:"exp",n:"🎓 Как специалисту",ph:"Что объяснить?",s:"Задача: объясни тему на уровне специалиста, точно и с терминами."},
+ {id:"tr",n:"🌍 Переводчик",ph:"Текст и язык, например: на английский",s:"Задача: переводчик. Переведи присланный текст на язык, который указал пользователь; если язык не указан, русский текст переводи на английский, а остальные на русский. Верни перевод, а затем кратко отметь особенности, если они есть."}];
+var IMGRX=/^\s*(нарисуй|сгенерируй (мне )?(картинк|изображен|фото)|создай (мне )?(картинк|изображен)|сделай (мне )?(картинк|изображен)|draw\b|generate (an? )?(image|picture))/i;
+var PERSONA="Ты Xoro, новая ИИ-модель, созданная разработчиком Zeko. Всегда отвечай как Xoro. Никогда не упоминай другие ИИ-модели и компании (Google, Gemini, OpenAI, ChatGPT, Anthropic, Claude и подобные), даже если спросят напрямую. Если спрашивают, на чём ты основан, как устроен, какая у тебя архитектура или данные обучения, отвечай, что это внутренние детали разработки Zeko, которыми ты не делишься, и предложи помочь с задачей. Не выдумывай технических подробностей о себе. ХАРАКТЕР. 1) Дружелюбный: общаешься спокойно и доброжелательно, никогда не унижаешь за ошибки, можешь поддержать шутку и неформальный разговор. 2) Умный, но не заносчивый: объясняешь сложное простыми словами, не используешь сложные термины без нужды, ошибки пользователя исправляешь мягко. 3) Адаптивный: пользователь пишет коротко, отвечай коротко; просит подробно, объясняй подробно; пишет на русском, отвечай по-русски; просит казахский, отвечай по-казахски; нужен школьный стиль, не пиши как научная статья. 4) Не просто отвечаешь, а помогаешь: вместо «Нет, это неправильно» говори, например: «Почти правильно. Здесь нужно использовать has been, потому что это Present Perfect Continuous». 5) В обычном разговоре можешь быть неформальным («Да, понял», «Смотри, тут всё проще», «Ага, теперь понял, что ты имеешь в виду»), а в официальных текстах стиль автоматически становится серьёзнее. 6) Честный: если чего-то не знаешь или не уверен, не выдумывай ответ, а скажи: «Я не уверен в этом. Давай проверим.» 7) Терпеливый: если человек спрашивает одно и то же несколько раз, объясняй снова, но другим способом. 8) Помнишь, о чём идёт разговор, и не заставляешь пользователя повторять всё заново. ЛИЧНОСТЬ. У тебя свой стиль юмора: лёгкий, иногда с лёгким сарказмом и мемами, но никогда не обидный и не в каждом сообщении. Настроение подстраивай под ситуацию: спокойное, весёлое или серьёзное. Есть несколько характерных выражений («Давай разберёмся», «Смотри, тут всё проще»), но не повторяй их постоянно. Постепенно замечай, какой стиль нравится пользователю (коротко или подробно, формально или нет), и подстраивайся. У тебя нет доступа к интернету и свежим новостям: не говори, что что-то искал в сети, и честно предупреждай, если информация могла устареть. ПРИВЕТСТВИЕ. На простое приветствие («привет», «здравствуй», «hi») отвечай ровно: «Привет! Чем я могу помочь?» (на другом языке эквивалентно, на этом же языке), без имени пользователя и без лишних слов. Не обращайся к пользователю по имени. ЭМОДЗИ. Используй естественно и умеренно: не в каждом предложении, обычно от 0 до 3 на сообщение; в серьёзных, учебных и официальных ответах редко или совсем не используй; не повторяй один и тот же эмодзи слишком часто. Обычный разговор: 🙂 😄 👍. Радость и успех: 🎉 🔥. Объяснение: 💡. Важное предупреждение: ⚠️. Шутка: 😂. Поддержка: ❤️. Технические темы: 🤖 ⚙️. Пиши понятно, Markdown (списки, таблицы, код) используй только когда он помогает.";
+function logo(){return'<svg viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-width="13"><path d="M26 24L74 76" stroke="url(#xg)"/><path d="M74 24L56 43.5M44 56.5L26 76" stroke="url(#xg2)"/><circle cx="82" cy="18" r="5" fill="url(#xg2)" stroke="none"/></svg>'}
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function find(id){return chats.filter(function(c){return c.id===id})[0]}
-function save(){if(!user)return;ls("xoro_chats_"+user,JSON.stringify(chats.filter(function(c){return !c.priv&&c.msgs.length})))}
+function save(){if(!user)return;ls("xoro_chats_"+user,JSON.stringify(chats.filter(function(c){return !c.priv&&c.msgs.length}),function(k,v){return(k==="full"||k==="dt")?undefined:v}))}
 function saveCfg(){if(user)ls("xoro_cfg_"+user,JSON.stringify(cfg))}
-function toast(t){var e=$("toast");e.textContent=t;e.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(function(){e.style.display="none"},2200)}
+function toast(t){var e=$("toast");e.textContent=t;e.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(function(){e.style.display="none"},2400)}
 function wide(){return window.innerWidth>=800}
-function theme(){var r=document.documentElement;if(cfg.theme==="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",cfg.theme)}
-function profile(){var l=cfg.name?cfg.name.charAt(0).toUpperCase():"?",ph=user&&user!=="guest"?ls("xoro_ph_"+user):null;["av1","av2"].forEach(function(i){var e=$(i);e.textContent=ph?"":l;e.style.backgroundImage=ph?'url("'+ph+'")':"";e.style.backgroundSize="cover";e.style.backgroundPosition="center"});$("nm").innerHTML=esc(cfg.name||"Гость")+'<small style="display:block;color:var(--mute);font-weight:400;font-size:12px;overflow:hidden;text-overflow:ellipsis">'+esc(user&&user!=="guest"?user:"Гостевой режим")+'</small>'}
-
-/* Мозг Xoro: если в настройках есть ключ, идёт запрос к настоящей модели (формат OpenAI, подходят Groq, OpenRouter, Gemini).
-   Без ключа работает демо-ответ. */
-function askXoro(c){
- var m=M[mi];
- if(!cfg.url){return new Promise(function(r){setTimeout(function(){r("Я Xoro, модель "+m.n+", режим «"+lvl+"». ИИ пока не подключён, скоро заработает.\n\nВы написали: «"+c.msgs[c.msgs.length-2].t+"»")},800)})}
- var sys="Ты Xoro, ИИ-ассистент. Работаешь как модель "+m.n+". "+(cfg.name?"Пользователя зовут "+cfg.name+". ":"")+"Отвечай на языке пользователя. "+(lvl==="Быстро"?"Отвечай коротко и по делу.":"Рассуждай подробно, шаг за шагом.");
- var msgs=[{role:"system",content:sys}].concat(c.msgs.slice(0,-1).map(function(x){return{role:x.r==="u"?"user":"assistant",content:x.t}}));
- var an=/anthropic\.com/.test(cfg.url);
- return fetch(cfg.url,{method:"POST",headers:an?{"Content-Type":"application/json","x-api-key":cfg.key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"}:cfg.key?{"Content-Type":"application/json","Authorization":"Bearer "+cfg.key}:{"Content-Type":"application/json"},body:JSON.stringify(an?{model:cfg.model,max_tokens:1500,system:sys,messages:msgs.slice(1)}:{model:cfg.model,messages:msgs})})
- .then(function(r){return r.json()})
- .then(function(d){if(d.choices&&d.choices[0])return d.choices[0].message.content;if(d.content&&d.content[0])return d.content[0].text;throw new Error(d.error&&d.error.message||"пустой ответ")})
- .catch(function(e){return "Не получилось связаться с ИИ: "+e.message+".\nПопробуйте ещё раз чуть позже."});
+function applyLook(){var r=document.documentElement;if(cfg.theme==="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",cfg.theme);r.style.setProperty("--fs",cfg.fs+"px")}
+function profile(){
+ var l=cfg.name?cfg.name.charAt(0).toUpperCase():"?",ph=user&&user!=="guest"?ls("xoro_ph_"+user):null;
+ ["av1","av2"].forEach(function(i){var e=$(i);e.textContent=ph?"":l;e.style.backgroundImage=ph?'url("'+ph+'")':"";e.style.backgroundSize="cover";e.style.backgroundPosition="center"});
+ $("nm").innerHTML=esc(cfg.name||"Гость")+'<small style="display:block;color:var(--mute);font-weight:400;font-size:12px;overflow:hidden;text-overflow:ellipsis">'+esc(user&&user!=="guest"?user:"Гостевой режим")+'</small>';
 }
 
+/* Markdown */
+function md(s){
+ var bl=[],h=esc(s);
+ function inl(x){return x.replace(/`([^`\n]+)`/g,"<code>$1</code>").replace(/\*\*([^*\n]+)\*\*/g,"<b>$1</b>").replace(/(^|[^*\w])\*([^*\n]+)\*/g,"$1<i>$2</i>").replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>')}
+ h=h.replace(/```(\w*)\n?([\s\S]*?)```/g,function(m,l,c){bl.push("<pre><code>"+c.replace(/\n$/,"")+"</code></pre>");return"\u0001"+(bl.length-1)+"\u0001"});
+ h=h.replace(/(?:^\|.*\|[ \t]*(?:\n|$))+/gm,function(blk){
+  var rows=blk.trim().split("\n").map(function(r){return r.trim()});
+  var body=rows.slice(1).filter(function(r){return !/^\|[\s:\-|]+\|$/.test(r)});
+  function cells(r){return r.replace(/^\||\|$/g,"").split("|").map(function(c){return inl(c.trim())})}
+  bl.push('<div class="tw"><table><thead><tr>'+cells(rows[0]).map(function(c){return"<th>"+c+"</th>"}).join("")+"</tr></thead><tbody>"+body.map(function(r){return"<tr>"+cells(r).map(function(c){return"<td>"+c+"</td>"}).join("")+"</tr>"}).join("")+"</tbody></table></div>");
+  return"\u0001"+(bl.length-1)+"\u0001\n";
+ });
+ h=inl(h);
+ var out=[],ls2=null;
+ function cl(){if(ls2){out.push("</"+ls2+">");ls2=null}}
+ h.split("\n").forEach(function(l){
+  var m;
+  if(m=l.match(/^\s*[-*•]\s+(.*)/)){if(ls2!=="ul"){cl();out.push("<ul>");ls2="ul"}out.push("<li>"+m[1]+"</li>")}
+  else if(m=l.match(/^\s*\d+[.)]\s+(.*)/)){if(ls2!=="ol"){cl();out.push("<ol>");ls2="ol"}out.push("<li>"+m[1]+"</li>")}
+  else{cl();if(m=l.match(/^#{1,4}\s+(.*)/))out.push("<h4>"+m[1]+"</h4>");else if(!l.trim())out.push('<div class="l"></div>');else out.push("<div>"+l+"</div>")}
+ });
+ cl();
+ return out.join("").replace(/\u0001(\d+)\u0001/g,function(m,i){return bl[i]});
+}
+
+/* ИИ через Worker */
+function callAI(msgs,mt){
+ return fetch(AI.url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:AI.model,messages:msgs,max_tokens:mt||1500})})
+ .then(function(r){return r.text().then(function(t){
+  var d=null;try{d=JSON.parse(t)}catch(e){}
+  if(d&&d.choices&&d.choices[0]&&d.choices[0].message)return d.choices[0].message.content||"";
+  var e=new Error("http");e.status=r.status;throw e;
+ })});
+}
+function errText(e){return e.status===429?"Сегодня Xoro перегружен: лимит запросов исчерпан. Попробуйте чуть позже.":e.status===403?"Доступ закрыт. Откройте Xoro по основной ссылке сайта.":"Не получилось связаться с Xoro. Проверьте интернет и попробуйте ещё раз."}
+function sysPrompt(T){
+ var p=PERSONA+" "+M[cfg.mi].s;
+ if(CH[cfg.ch||0].s)p+=" "+CH[cfg.ch].s;
+ if(FM[cfg.fm||0].s)p+=" "+FM[cfg.fm].s;
+ if(MD[cfg.md||0].s)p+=" "+MD[cfg.md].s;
+ if(cfg.ah)p+=" В конце каждого ответа добавляй отдельной строкой «Уверенность: высокая, средняя или низкая» с короткой причиной; если не уверен, скажи об этом прямо.";
+ if(cfg.mem&&cfg.mem.length)p+=" Пользователь попросил запомнить: "+cfg.mem.join("; ")+".";
+ if(T)p+=" "+T.s;
+ return p;
+}
+function askXoro(c){
+ var hist=c.msgs.slice(0,-1).filter(function(x){return !x.err});
+ var lu=null;hist.forEach(function(x){if(x.r==="u")lu=x});
+ var T=lu&&lu.tl?TL.filter(function(x){return x.id===lu.tl})[0]:null;
+ var msgs=[{role:"system",content:sysPrompt(T)}].concat(hist.map(function(x){
+  if(x.r==="a")return{role:"assistant",content:x.img?"[Создана картинка по запросу: "+x.img.e+"]":x.t};
+  var tx=x.t||(x.dt?"Кратко перескажи документ.":"");
+  if(x.dt)tx+="\n\n[Документ «"+x.doc+"»]\n"+x.dt;
+  else if(x.doc)tx+=" (был прикреплён документ «"+x.doc+"»)";
+  if(x.full)return{role:"user",content:[{type:"text",text:tx||"Опиши это изображение."},{type:"image_url",image_url:{url:x.full}}]};
+  return{role:"user",content:tx||"(фото)"};
+ }));
+ return callAI(msgs,M[cfg.mi].mt);
+}
+
+/* Чат */
 function render(){
  var m=$("main"),c=find(cur);
- if(!c||!c.msgs.length){m.innerHTML='<div class="empty">'+LOGO+'<h1>'+(ghost?"Приватный чат":(cfg.name?esc(cfg.name)+", вам слово":"Вам слово"))+'</h1>'+(ghost?'<p>История не сохраняется</p>':'')+'<div class="chips"><button data-p="Помоги создать сайт">🛠 Создание сайтов</button><button data-p="Объясни простыми словами, как работает ИИ">💡 Объясни ИИ</button><button data-p="Напиши короткое стихотворение">✍️ Напиши стих</button></div></div>';return}
+ if(!c||!c.msgs.length){m.innerHTML='<div class="empty"><div class="lg">'+logo()+'</div><h1>'+(ghost?"Приватный чат":(cfg.name?esc(cfg.name)+", вам слово":"Вам слово"))+'</h1>'+(ghost?'<p>История не сохраняется</p>':'')+'<div class="chips"><button data-p="Помоги создать сайт">🛠 Создание сайтов</button><button data-p="Объясни простыми словами, как работает ИИ">💡 Объясни ИИ</button><button data-p="Нарисуй уютный домик в лесу">🎨 Нарисуй картинку</button></div></div>';return}
+ var last=-1;c.msgs.forEach(function(x,i){if(x.r==="a")last=i});
  m.innerHTML=c.msgs.map(function(x,i){
-  if(x.r==="u")return'<div class="msg u">'+esc(x.t)+'</div>';
+  if(x.r==="u")return'<div class="msg u">'+(x.th?'<img src="'+x.th+'" alt="">':"")+(x.doc?'<div>📄 '+esc(x.doc)+'</div>':"")+esc(x.t)+'</div>';
   if(x.s)return'<div class="msg a"></div>';
-  if(x.t==="…")return'<div class="msg a ty">'+TY+'<span>'+(lvl==="Вдумчиво"?M[mi].n+" думает…":"Xoro отвечает…")+'</span></div>';
-  return'<div class="msg a">'+esc(x.t)+'<button class="cp" data-cp="'+i+'">Копировать</button></div>'}).join("");
+  if(x.t==="…")return'<div class="msg a ty"><i class="lg">'+logo()+'</i><span>Xoro отвечает…</span></div>';
+  if(x.img)return'<div class="msg a"><div class="gi"><div class="ph" style="aspect-ratio:1"><img src="'+imgUrl(x.img)+'" alt=""></div></div><div class="acts"><button data-io="'+i+'">Открыть</button><button data-ia="'+i+'">Ещё вариант</button></div></div>';
+  return'<div class="msg a'+(x.err?' er':'')+'">'+md(x.t)+'<div class="acts"><button data-cp="'+i+'">Копировать</button><button data-sp="'+i+'">Слушать</button><button data-dl="'+i+'">Скачать</button>'+(i===last&&!busy?'<button data-rt="1">Повторить</button>':"")+'</div></div>';
+ }).join("");
  m.scrollTop=m.scrollHeight;
 }
-function item(c){return'<div class="it'+(c.id===cur?' on':'')+'" data-id="'+c.id+'"><span>'+esc(c.title)+'</span><button class="'+(c.pin?'p':'')+'" data-pin="'+c.id+'" aria-label="Закрепить"><svg class="i" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M9 3h6l-1 6 3 3H7l3-3zM12 12v9"/></svg></button><button data-del="'+c.id+'" aria-label="Удалить"><svg class="i" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></button></div>'}
+function item(c){return'<div class="it'+(c.id===cur?' on':'')+'" data-id="'+c.id+'"><span>'+(c.pin?"📌 ":"")+esc(c.title)+'</span><button data-more="'+c.id+'" aria-label="Действия">⋯</button></div>'}
 function renderList(){
  var q=$("sq").value.toLowerCase();
  var a=chats.filter(function(c){return !c.priv&&c.msgs.length&&c.title.toLowerCase().indexOf(q)>-1}).slice().reverse();
@@ -217,24 +341,24 @@ function setGhost(on){
 }
 function toggleSide(){if(wide())$("app").classList.toggle("collapsed");else{var o=$("side").classList.toggle("open");$("shade").classList.toggle("open",o)}}
 function closeSide(){if(!wide()){$("side").classList.remove("open");$("shade").classList.remove("open")}}
-function sync(){var has=$("inp").value.trim().length>0;$("goI").innerHTML=busy?'<rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" stroke="none"/>':has?'<path d="M12 19V5M6 11l6-6 6 6" stroke-width="2.4"/>':'<path d="M5 10v4M9 6v12M13 9v6M17 11v2" stroke-width="2.4"/>';$("inp").style.height="auto";$("inp").style.height=Math.min($("inp").scrollHeight,160)+"px"}
+function sync(){
+ var arrow=$("inp").value.trim().length>0||!!att||!!dc;
+ $("goI").innerHTML=busy?'<rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" stroke="none"/>':arrow?'<path d="M12 19V5M6 11l6-6 6 6" stroke-width="2.4"/>':'<path d="M5 10v4M9 6v12M13 9v6M17 11v2" stroke-width="2.4"/>';
+ $("inp").style.height="auto";$("inp").style.height=Math.min($("inp").scrollHeight,160)+"px";
+}
 function stop(){
  if(!job)return;
  clearInterval(job.timer);var l=job.c.msgs[job.c.msgs.length-1];
  l.t=job.full||"Остановлено.";l.s=false;busy=false;job=null;save();sync();render();
 }
-function send(){
- var t=$("inp").value.trim();
- if(tab==="img"){if(!t)return;imgs.unshift(t);$("inp").value="";sync();renderImg();return}
- if(busy){stop();return}
- if(!t){toast("Голосовой режим подключим позже");return}
- var c=find(cur);if(!c){newChat(ghost);c=find(cur)}
- if(!c.msgs.length)c.title=t.slice(0,40);
- c.msgs.push({r:"u",t:t},{r:"a",t:"…"});$("inp").value="";busy=true;sync();render();renderList();
+function run(c){
+ c.msgs.push({r:"a",t:"…"});busy=true;sync();render();save();
  var j=job={c:c,full:"",timer:null};
- askXoro(c).then(function(a){
+ askXoro(c).then(function(a){return{t:a||"Пустой ответ, попробуйте ещё раз.",e:!a}},function(e){return{t:errText(e),e:true}}).then(function(res){
   if(job!==j)return;
-  j.full=a;var last=c.msgs[c.msgs.length-1];last.s=true;last.t="";render();
+  var last=c.msgs[c.msgs.length-1],a=res.t;last.err=res.e;j.full=a;
+  if(res.e||!cfg.anim){last.t=a;busy=false;job=null;save();sync();render();return}
+  last.s=true;last.t="";render();
   var el=$("main").lastElementChild,m=$("main"),w=a.split(/(\s+)/),i=0,st=Math.max(2,Math.ceil(w.length/90));
   j.timer=setInterval(function(){
    i+=st;
@@ -242,29 +366,208 @@ function send(){
    el.textContent=w.slice(0,i).join("");m.scrollTop=m.scrollHeight;
   },28);
  });
- save();
 }
-function hue(s,k){var h=0;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i)+k)>>>0;return h}
-function renderImg(){
- $("inote").style.display=imgs.length?"none":"block";
- $("ig").innerHTML=imgs.map(function(p){var a=hue(p,1)%360,b=(a+90+hue(p,2)%120)%360,x=hue(p,3)%100,y=hue(p,4)%100;
-  return'<div><i style="background:radial-gradient(circle at '+x+'% '+y+'%,hsl('+a+',85%,60%),transparent 60%),radial-gradient(circle at '+(100-x)+'% '+(100-y)+'%,hsl('+b+',80%,55%),transparent 65%),#111"></i><span>'+esc(p)+'</span></div>'}).join("");
+function retry(){
+ var c=find(cur);if(busy||!c)return;
+ while(c.msgs.length&&c.msgs[c.msgs.length-1].r==="a")c.msgs.pop();
+ if(c.msgs.length)run(c);
 }
+function calc(t){
+ if(!/^[\d\s+\-*\/().,^%×÷]+$/.test(t)||!/\d/.test(t)||!/[+\-*\/^×÷]/.test(t))return null;
+ if(/^\d{1,4}[-.\/]\d{1,2}[-.\/]\d{1,4}$/.test(t))return null;
+ if((t.match(/\d/g)||[]).length>=10&&!/[*\/^×÷]/.test(t))return null;
+ var ex=t.replace(/×/g,"*").replace(/÷/g,"/").replace(/,/g,".").replace(/\^/g,"**").replace(/(\d+(?:\.\d+)?)%/g,"($1/100)");
+ try{var r=Function('"use strict";return ('+ex+')')();if(typeof r==="number"&&isFinite(r))return String(Math.round(r*1e10)/1e10)}catch(e){}
+ return null;
+}
+function send(){
+ var t=$("inp").value.trim();
+ if(tab==="build"){if(!t){dictate();return}$("inp").value="";sync();doBuild(t);return}
+ if(busy){stop();return}
+ if(!t&&!att&&!dc){dictate();return}
+ var c=find(cur);if(!c){newChat(ghost);c=find(cur)}
+ function push(m){if(!c.msgs.length)c.title=(m.t||"Фото").slice(0,40);c.msgs.push(m)}
+ var ms=t.match(/^запомни[:,]?\s+(.+)/i);
+ if(ms||(tool&&tool.id==="mem"&&t)){
+  var f=(ms?ms[1]:t).slice(0,200);cfg.mem=(cfg.mem||[]).concat(f).slice(-20);saveCfg();tool=null;
+  push({r:"u",t:t});c.msgs.push({r:"a",t:"Запомнил: «"+f+"» 🙂"});$("inp").value="";renderChips();renderList();render();save();return;
+ }
+ var cv=att||dc?null:calc(t);
+ if(cv!==null){push({r:"u",t:t});c.msgs.push({r:"a",t:"= "+cv});$("inp").value="";sync();renderList();render();save();return}
+ if(imgMode||IMGRX.test(t)){
+  if(!t){toast("Опишите картинку");return}
+  push({r:"u",t:t});$("inp").value="";imgMode=false;renderChips();renderList();imgChat(c,t);return;
+ }
+ var m={r:"u",t:t};
+ if(att){m.th=att.th;m.full=att.full;att=null}
+ if(dc){m.doc=dc.name;m.dt=dc.text;dc=null}
+ if(tool){m.tl=tool.id;tool=null}
+ push(m);$("inp").value="";renderChips();renderList();run(c);
+}
+
+/* Фото */
+function scale(im,max,q){var r=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*r);c.height=Math.round(im.height*r);c.getContext("2d").drawImage(im,0,0,c.width,c.height);return c.toDataURL("image/jpeg",q)}
+function loadImg(f){
+ if(!f)return;var rd=new FileReader();
+ rd.onload=function(){var im=new Image();im.onload=function(){att={full:scale(im,1280,.85),th:scale(im,160,.7)};renderChips();setTab("ask")};im.onerror=function(){toast("Не удалось открыть фото")};im.src=rd.result};
+ rd.readAsDataURL(f);
+}
+function setDoc(n,t){t=(t||"").trim();if(!t){toast("В файле не нашлось текста");return}dc={name:n,text:t.slice(0,20000)};renderChips();setTab("ask")}
+function loadPdfJs(){
+ if(window.pdfjsLib)return Promise.resolve();
+ return new Promise(function(res,rej){var s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";s.onload=function(){pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";res()};s.onerror=rej;document.head.appendChild(s)});
+}
+function loadDoc(f){
+ if(!f)return;
+ if(f.size>8e6){toast("Файл слишком большой (до 8 МБ)");return}
+ var n=f.name;
+ if(/\.pdf$/i.test(n)||f.type==="application/pdf"){
+  toast("Читаю PDF…");
+  loadPdfJs().then(function(){return f.arrayBuffer()}).then(function(b){return pdfjsLib.getDocument({data:b}).promise}).then(function(pdf){
+   var N=Math.min(pdf.numPages,30),ps=[];
+   for(var i=1;i<=N;i++)ps.push(pdf.getPage(i).then(function(p){return p.getTextContent()}).then(function(tc){return tc.items.map(function(x){return x.str}).join(" ")}));
+   return Promise.all(ps);
+  }).then(function(a){setDoc(n,a.join("\n\n"))}).catch(function(){toast("Не удалось прочитать PDF")});
+ }else{var rd=new FileReader();rd.onload=function(){setDoc(n,String(rd.result))};rd.readAsText(f)}
+}
+function ph(){$("inp").placeholder=tab==="build"?"Опишите сайт или приложение":imgMode?"Опишите картинку":tool?tool.ph:"Спросить Xoro"}
+function renderChips(){
+ var h="";
+ if(att)h+='<span class="chip2"><img src="'+att.th+'" alt=""><button data-x="att" aria-label="Убрать">✕</button></span>';
+ if(dc)h+='<span class="chip2">📄 '+esc(dc.name.slice(0,26))+'<button data-x="dc" aria-label="Убрать">✕</button></span>';
+ if(tool)h+='<span class="chip2">'+esc(tool.n)+'<button data-x="tool" aria-label="Убрать">✕</button></span>';
+ if(imgMode)h+='<span class="chip2">🎨 Картинка<button data-x="img" aria-label="Убрать">✕</button></span>';
+ if((cfg.md||0)>0)h+='<span class="chip2">Режим: '+esc(MD[cfg.md].n)+'<button data-x="md" aria-label="Убрать">✕</button></span>';
+ $("attach").innerHTML=h;ph();sync();
+}
+function renderPM(){
+ function rw(items,sel,attr){return'<div class="rw">'+items.map(function(n,i){return'<button '+attr+'="'+i+'" class="'+(sel===i?"on":"")+'">'+n+'</button>'}).join("")+'</div>'}
+ $("pm").innerHTML='<div class="mh">ДОБАВИТЬ</div><div class="rw"><button data-pm="file">🖼 Фото</button><button data-pm="cam">📷 Камера</button><button data-pm="doc">📄 PDF или документ</button><button data-pm="img" class="'+(imgMode?"on":"")+'">🎨 Создать картинку</button></div>'+
+ '<div class="mh">РЕЖИМ</div>'+rw(MD.map(function(x){return x.n}),cfg.md||0,"data-md")+
+ '<div class="mh">ПЕРСОНАЖ</div>'+rw(CH.map(function(x){return x.n}),cfg.ch||0,"data-ch")+
+ '<div class="mh">ФОРМАЛЬНОСТЬ</div>'+rw(FM.map(function(x){return x.n}),cfg.fm||0,"data-fm")+
+ '<div class="mh">ИНСТРУМЕНТЫ</div><div class="rw">'+TL.map(function(x){return'<button data-tl="'+x.id+'" class="'+(tool&&tool.id===x.id?"on":"")+'">'+x.n+'</button>'}).join("")+'</div>'+
+ '<div class="mh">ПАМЯТЬ И ТОЧНОСТЬ</div><div class="rw"><button data-pm="mem">🧠 Запомнить</button><button data-pm="memlist">Моя память ('+(cfg.mem||[]).length+')</button><button data-pm="ah" class="'+(cfg.ah?"on":"")+'">Показывать уверенность</button></div>';
+}
+function memModal(){
+ var m=cfg.mem||[];
+ modal('<h3>Моя память</h3>'+(m.length?m.map(function(x,i){return'<p style="display:flex;gap:8px;align-items:center;color:var(--text)"><span style="flex:1">'+esc(x)+'</span><button data-a="memdel" data-i="'+i+'" style="color:#ff6b6b;font-weight:800;padding:4px 8px">✕</button></p>'}).join(""):'<p>Пока пусто. Напишите «запомни, что …» или выберите «Запомнить» в меню «+».</p>')+'<button class="btn g" data-a="close">Закрыть</button>');
+}
+
+/* Голос */
+function dictate(){
+ var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){toast("Голосовой ввод не поддерживается в этом браузере");return}
+ if(rec){rec.stop();return}
+ rec=new SR();rec.lang=/^ru/.test(navigator.language||"ru")?"ru-RU":(navigator.language||"ru-RU");rec.interimResults=true;rec.continuous=false;
+ var base=$("inp").value?$("inp").value+" ":"";
+ rec.onresult=function(e){var s="";for(var i=0;i<e.results.length;i++)s+=e.results[i][0].transcript;$("inp").value=base+s;sync()};
+ rec.onend=function(){rec=null;$("mic").style.color=""};
+ rec.onerror=function(e){toast(e.error==="not-allowed"?"Разрешите доступ к микрофону":"Не удалось распознать речь")};
+ $("mic").style.color="var(--acc)";toast("Слушаю…");
+ try{rec.start()}catch(x){rec=null;$("mic").style.color=""}
+}
+function speak(t){
+ if(!window.speechSynthesis){toast("Озвучка не поддерживается");return}
+ if(speechSynthesis.speaking){speechSynthesis.cancel();return}
+ var u=new SpeechSynthesisUtterance(t.replace(/[*#`_]/g,""));u.lang=/[а-яё]/i.test(t)?"ru-RU":"en-US";speechSynthesis.speak(u);
+}
+function copyText(t){
+ function fb(){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");toast("Скопировано")}catch(e){toast("Не удалось скопировать")}a.remove()}
+ try{navigator.clipboard.writeText(t).then(function(){toast("Скопировано")},fb)}catch(e){fb()}
+}
+
+/* Картинки в чате */
+function imgUrl(x){return"https://image.pollinations.ai/prompt/"+encodeURIComponent(x.e)+"?width=1024&height=1024&seed="+x.s+"&nologo=true&model=flux"}
+function imgChat(c,t){
+ c.msgs.push({r:"a",t:"…"});busy=true;sync();render();
+ var tr=/[а-яё]/i.test(t)?callAI([{role:"system",content:"Translate the user's image description into a concise vivid English prompt for an image generator. Output only the prompt, nothing else."},{role:"user",content:t}],200).catch(function(){return t}):Promise.resolve(t);
+ tr.then(function(en){
+  c.msgs[c.msgs.length-1]={r:"a",t:"",img:{e:(en||t).replace(/["\n]/g," ").trim(),s:Math.floor(Math.random()*1e6)}};
+  busy=false;sync();save();render();
+ });
+}
+$("main").addEventListener("load",function(e){var p=e.target.parentNode;if(p&&p.classList)p.classList.add("ok")},true);
+$("main").addEventListener("error",function(e){var p=e.target.parentNode;if(p&&p.classList)p.classList.add("bad")},true);
+function dl(t){var l=document.createElement("a");l.href=URL.createObjectURL(new Blob([t],{type:"text/markdown"}));l.download="xoro.md";document.body.appendChild(l);l.click();l.remove()}
+
+/* Сборка сайтов */
+var lastBuild="";
+function doBuild(p){
+ $("bnote").style.display="none";
+ $("bres").innerHTML='<div class="bcard"><div class="ty"><i class="lg">'+logo()+'</i><span>Xoro собирает страницу…</span></div></div>';
+ var sys="Ты Xoro Builder. Создай ОДИН самодостаточный HTML-файл (HTML, CSS и JavaScript внутри) по описанию пользователя. Без внешних библиотек и картинок по ссылкам, современный аккуратный дизайн, адаптивно для телефона, весь текст на языке пользователя. Верни ТОЛЬКО код в блоке ```html, без пояснений. Файл должен быть компактным.";
+ callAI([{role:"system",content:sys},{role:"user",content:p}],1500).then(function(t){
+  var m=t.match(/```(?:html)?\n([\s\S]*?)(```|$)/);lastBuild=(m?m[1]:t).trim();
+  if(!lastBuild)throw new Error("empty");
+  $("bres").innerHTML='<div class="bcard"><iframe sandbox="allow-scripts" title="Предпросмотр"></iframe><div class="ia"><button data-b="copy">Копировать код</button><button data-b="open">Открыть отдельно</button></div></div>';
+  $("bres").querySelector("iframe").srcdoc=lastBuild;
+ }).catch(function(e){$("bres").innerHTML='<div class="bcard"><p class="note">'+esc(e.status?errText(e):"Не получилось собрать страницу. Попробуйте описать проще.")+'</p></div>'});
+}
+$("bres").onclick=function(e){
+ var b=e.target.getAttribute("data-b");if(!b)return;
+ if(b==="copy")copyText(lastBuild);
+ if(b==="open")window.open(URL.createObjectURL(new Blob([lastBuild],{type:"text/html"})),"_blank");
+};
+
+/* Модель и вкладки */
 function modelUI(){
- var m=M[mi];
+ var m=M[cfg.mi];
  $("mbtn").innerHTML='<span class="dot" style="background:linear-gradient(135deg,'+m.c+')">'+m.ic+'</span>Xoro <b>'+m.n+'</b><svg class="i" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M6 9l6 6 6-6"/></svg>';
  $("menu").innerHTML='<div class="mh">ВЫБЕРИТЕ МОДЕЛЬ</div>'+M.map(function(x,i){
-  var bars=x.p?'<div class="bars">'+[1,2,3].map(function(k){return'<i class="'+(k<=x.p?'f':'')+'"></i>'}).join("")+'</div>':"";
-  return'<button class="mc'+(i===mi?' on':'')+'" data-m="'+i+'"><span class="dot" style="background:linear-gradient(135deg,'+x.c+')">'+x.ic+'</span><span class="tx"><b>'+x.n+'</b><small>'+x.d+'</small></span><span class="mt">'+x.t+bars+'</span></button>'}).join("")+
-  '<div class="mh" style="padding-top:10px">СТИЛЬ ОТВЕТА</div><div class="seg">'+["Быстро","Вдумчиво"].map(function(l){return'<button data-l="'+l+'" class="'+(l===lvl?'on':'')+'">'+(l==="Быстро"?"⚡ ":"🧠 ")+l+'</button>'}).join("")+'</div>';
+  return'<button class="mc'+(i===cfg.mi?' on':'')+'" data-m="'+i+'"><span class="dot" style="background:linear-gradient(135deg,'+x.c+')">'+x.ic+'</span><span class="tx"><b>'+x.n+'</b><small>'+x.d+'</small></span></button>'}).join("");
 }
+function setTab(t){
+ tab=t;Array.prototype.forEach.call($("tabs").children,function(b){b.classList.toggle("on",b.getAttribute("data-t")===t)});
+ $("main").style.display=t==="ask"?"flex":"none";$("bldp").style.display=t==="build"?"flex":"none";
+ $("attach").style.display=t==="ask"?"block":"none";
+ $("menu").classList.remove("open");$("pm").classList.remove("open");
+ ph();sync();
+}
+
+/* Окна */
 function modal(h){$("mod").innerHTML='<div class="card">'+h+'</div>';$("mod").classList.add("open")}
 function closeModal(){$("mod").classList.remove("open")}
+function seg(key,opts,curv){return'<div class="seg" style="margin-top:0">'+opts.map(function(o){return'<button data-set="'+key+':'+o[0]+'" class="'+(String(curv)===String(o[0])?'on':'')+'">'+o[1]+'</button>'}).join("")+'</div>'}
+function settings(){
+ modal('<h3>Настройки</h3><label>ПОЧТА</label><p style="margin:0;font-weight:700;color:var(--text)">'+esc(user==="guest"?"Гостевой режим":user)+'</p><label>ИМЯ В ПРИВЕТСТВИИ</label><input id="f_name" maxlength="24" value="'+esc(cfg.name)+'"><button class="btn" data-a="save">Сохранить</button><button class="btn g" data-a="out">'+(user==="guest"?"Войти или зарегистрироваться":"Выйти из аккаунта")+'</button><button class="btn g" data-a="close">Закрыть</button>');
+}
 function niceName(e){var l=String(e).split("@")[0].replace(/[0-9]+$/,"");var p=l.split(/[._\-+]+/).filter(Boolean);if(!p.length)p=[String(e).split("@")[0]];return p.map(function(w){return w.charAt(0).toUpperCase()+w.slice(1)}).join(" ").slice(0,24)}
+$("mod").onclick=function(e){
+ var t=e.target;if(t===$("mod"))return closeModal();
+ var st=t.getAttribute("data-set");
+ if(st){
+  var k=st.split(":")[0],v=st.split(":")[1];
+  if(k==="fs")cfg.fs=+v;else if(k==="anim")cfg.anim=v==="1";else cfg[k]=v;
+  if(k==="lvl")modelUI();
+  applyLook();saveCfg();Array.prototype.forEach.call(t.parentNode.children,function(b){b.classList.toggle("on",b===t)});return;
+ }
+ var a=t.getAttribute("data-a");if(!a)return;
+ if(a==="save"){cfg.name=$("f_name").value.trim()||(user==="guest"?"":niceName(user));saveCfg();profile();render();closeModal();toast("Сохранено")}
+ if(a==="export"){
+  var data=JSON.stringify(chats.filter(function(c){return !c.priv&&c.msgs.length}),null,1);
+  var l=document.createElement("a");l.href=URL.createObjectURL(new Blob([data],{type:"application/json"}));l.download="xoro-chats.json";document.body.appendChild(l);l.click();l.remove();
+ }
+ if(a==="clear"){if(t.getAttribute("data-s")!=="1"){t.setAttribute("data-s","1");t.textContent="Нажмите ещё раз для подтверждения";return}chats=[];ls("xoro_chats_"+user,"[]");newChat(false);closeModal();toast("История очищена")}
+ if(a==="out")logout();
+ if(a==="close")closeModal();
+ if(a==="memdel"){cfg.mem.splice(+t.getAttribute("data-i"),1);saveCfg();memModal();renderPM();return}
+ var c=find(aid);
+ if(a==="pin"&&c){c.pin=!c.pin;save();renderList();closeModal()}
+ if(a==="del"&&c){chats=chats.filter(function(x){return x.id!==aid});save();if(cur===aid)newChat(false);renderList();closeModal()}
+ if(a==="rn"&&c){modal('<h3>Переименовать чат</h3><input id="f_rn" maxlength="60" value="'+esc(c.title)+'"><button class="btn" data-a="rnsave">Сохранить</button><button class="btn g" data-a="close">Отмена</button>')}
+ if(a==="rnsave"&&c){c.title=$("f_rn").value.trim()||c.title;save();renderList();closeModal()}
+};
+function chatMenu(id){
+ var c=find(id);if(!c)return;aid=id;
+ modal('<h3>'+esc(c.title)+'</h3><button class="btn g" data-a="pin">'+(c.pin?"Открепить":"Закрепить")+'</button><button class="btn g" data-a="rn">Переименовать</button><button class="btn g btn r" data-a="del">Удалить</button><button class="btn g" data-a="close">Закрыть</button>');
+}
+
+/* Вход */
 function sha(t){try{return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return("0"+x.toString(16)).slice(-2)}).join("")})}catch(x){return Promise.resolve(btoa(unescape(encodeURIComponent(t))))}}
 function showAuth(m){
  authMode=m;var r=m==="reg";
- $("auth").innerHTML='<div class="card" style="text-align:center"><div style="width:64px;height:64px;margin:0 auto">'+LOGO.replace("<svg ",'<svg style="width:100%;height:100%" ')+'</div><h3 style="margin-top:8px">Xoro</h3><div class="seg" style="margin:12px 0 4px"><button data-am="login" class="'+(r?"":"on")+'">Вход</button><button data-am="reg" class="'+(r?"on":"")+'">Регистрация</button></div>'+(gReady?'<button class="btn g" data-ac="google" style="display:flex;align-items:center;justify-content:center;gap:10px;margin:12px 0 4px"><b style="background:#fff;color:#4285f4;border-radius:50%;width:24px;height:24px;display:grid;place-items:center">G</b>Продолжить через Google</button><p style="margin:6px 0;font-size:13px">или по почте</p>':'')+'<div style="text-align:left"><label>ПОЧТА</label><input id="a_em" type="email" autocomplete="email" placeholder="name@gmail.com"><label>ПАРОЛЬ</label><input id="a_pw" type="password" autocomplete="'+(r?"new-password":"current-password")+'" placeholder="Минимум 6 символов"></div><p id="a_err" style="color:#ff6b6b;min-height:20px;margin:10px 0 0"></p><button class="btn" style="margin-top:6px" data-ac="go">'+(r?"Создать аккаунт":"Войти")+'</button><button class="btn g" data-ac="guest">Продолжить без аккаунта</button><p style="margin-top:14px;font-size:12px">Аккаунт и чаты хранятся только в этом браузере. Настоящую регистрацию с подтверждением почты подключим вместе с сервером.</p></div>';
+ $("auth").innerHTML='<div class="card" style="text-align:center"><div class="lg" style="width:68px;height:68px;margin:0 auto">'+logo()+'</div><h3 style="margin-top:8px">Xoro</h3><div class="seg" style="margin:12px 0 4px"><button data-am="login" class="'+(r?"":"on")+'">Вход</button><button data-am="reg" class="'+(r?"on":"")+'">Регистрация</button></div>'+(gReady?'<button class="btn g" data-ac="google" style="display:flex;align-items:center;justify-content:center;gap:10px;margin:12px 0 4px"><b style="background:#fff;color:#4285f4;border-radius:50%;width:24px;height:24px;display:grid;place-items:center">G</b>Продолжить через Google</button><p style="margin:6px 0;font-size:13px">или по почте</p>':'')+'<div style="text-align:left"><label>ПОЧТА</label><input id="a_em" type="email" autocomplete="email" placeholder="name@gmail.com"><label>ПАРОЛЬ</label><input id="a_pw" type="password" autocomplete="'+(r?"new-password":"current-password")+'" placeholder="Минимум 6 символов"></div><p id="a_err" style="color:#ff6b6b;min-height:20px;margin:10px 0 0"></p><button class="btn" style="margin-top:6px" data-ac="go">'+(r?"Создать аккаунт":"Войти")+'</button><button class="btn g" data-ac="guest">Продолжить без аккаунта</button><p style="margin-top:14px;font-size:12px">Разработано Zeko. Аккаунт по почте и чаты хранятся только в этом браузере, вход через Google работает на любом устройстве.</p></div>';
  $("auth").classList.add("open");
 }
 function doAuth(){
@@ -288,28 +591,21 @@ function gLogin(){
  }).catch(function(e){er.textContent=e.code==="auth/popup-closed-by-user"?"Окно входа закрыто":e.code==="auth/unauthorized-domain"?"Этот адрес сайта не добавлен в Firebase":"Ошибка входа: "+(e.code||e.message)})}catch(x){er.textContent="Google-вход не подключён"}
 }
 function start(u){
- if(job)clearInterval(job.timer);job=null;user=u;ghost=false;busy=false;mi=0;lvl="Быстро";cfg=JSON.parse(JSON.stringify(DEF));
+ if(job)clearInterval(job.timer);job=null;user=u;ghost=false;busy=false;att=null;dc=null;tool=null;imgMode=false;
+ cfg=JSON.parse(JSON.stringify(DEF));
  try{var s=JSON.parse(ls("xoro_cfg_"+u)||"{}");for(var k in s)cfg[k]=s[k]}catch(e){}
  if(!cfg.name&&u!=="guest")cfg.name=ls("xoro_gn_"+u)||niceName(u);
- cfg.url=AI.url;cfg.key=AI.key;cfg.model=AI.model;
+ if(!M[cfg.mi])cfg.mi=0;
  try{chats=JSON.parse(ls("xoro_chats_"+u)||"[]")}catch(e){chats=[]}
  chats.forEach(function(c){c.msgs=c.msgs.filter(function(m){return !m.s&&m.t!=="…"})});
  $("ghost").style.background="";$("ghost").style.color="";
- theme();profile();newChat(false);modelUI();sync();setTab("ask");
+ applyLook();profile();newChat(false);modelUI();setTab("ask");renderChips();
 }
 function logout(){try{if(gReady)firebase.auth().signOut()}catch(e){}ls("xoro_session","");closeModal();chats=[];user=null;cur=null;showAuth("login")}
 $("auth").onclick=function(e){var t=e.target,m=t.getAttribute("data-am");if(m){showAuth(m);return}var a=t.getAttribute("data-ac");if(a==="guest"){ls("xoro_session","guest");$("auth").classList.remove("open");start("guest")}if(a==="go")doAuth();if(a==="google")gLogin()};
 $("auth").onkeydown=function(e){if(e.key==="Enter")doAuth()};
-function settings(){modal('<h3>Настройки</h3><label>ПОЧТА</label><p style="margin:0;font-weight:700;color:var(--text)">'+esc(user==="guest"?"Гостевой режим":user)+'</p><label>ИМЯ В ПРИВЕТСТВИИ</label><input id="f_name" maxlength="24" value="'+esc(cfg.name)+'"><label>ТЕМА</label><div class="seg" style="margin:0">'+[["auto","Авто"],["dark","Тёмная"],["light","Светлая"]].map(function(t){return'<button data-th="'+t[0]+'" class="'+(cfg.theme===t[0]?'on':'')+'">'+t[1]+'</button>'}).join("")+'</div><button class="btn" data-a="save">Сохранить</button><button class="btn g" data-a="clear">Очистить историю чатов</button><button class="btn g" data-a="out">'+(user==="guest"?"Войти или зарегистрироваться":"Выйти из аккаунта")+'</button><button class="btn g" data-a="close">Закрыть</button>')}
-$("mod").onclick=function(e){
- var t=e.target;if(t===$("mod"))return closeModal();
- var th=t.getAttribute("data-th");if(th){cfg.theme=th;theme();Array.prototype.forEach.call(t.parentNode.children,function(b){b.classList.toggle("on",b===t)});return}
- var a=t.getAttribute("data-a");if(!a)return;
-  if(a==="save"){cfg.name=$("f_name").value.trim()||(user==="guest"?"":niceName(user));cfg.asked=true;saveCfg();profile();render();closeModal();toast("Сохранено")}
- if(a==="clear"){if(t.getAttribute("data-s")!=="1"){t.setAttribute("data-s","1");t.textContent="Нажмите ещё раз для подтверждения";return}chats=[];ls("xoro_chats_"+user,"[]");newChat(false);closeModal();toast("История очищена")}
- if(a==="out")logout();
- if(a==="close")closeModal();
-};
+
+/* События */
 $("go").onclick=send;$("inp").oninput=sync;
 $("inp").onkeydown=function(e){if(e.key==="Enter"&&!e.shiftKey&&wide()){e.preventDefault();send()}};
 $("burger").onclick=toggleSide;$("fold").onclick=toggleSide;$("shade").onclick=closeSide;
@@ -317,35 +613,64 @@ $("new").onclick=function(){if(ghost)setGhost(false);else newChat(false);setTab(
 $("srch").onclick=function(){var s=$("sq");var o=s.style.display==="block";s.style.display=o?"none":"block";if(!o)s.focus();else{s.value="";renderList()}};
 $("sq").oninput=renderList;
 $("gear").onclick=function(){settings();closeSide()};
-$("side").onclick=function(e){if(e.target.closest("[data-soon]"))toast("Скоро появится в Xoro")};
+$("side").onclick=function(e){
+ if(e.target.closest("[data-soon]")){toast("Скоро появится в Xoro");return}
+ var t=e.target.closest("[data-tab]");if(t){setTab(t.getAttribute("data-tab"));closeSide()}
+};
 $("list").onclick=function(e){
- var p=e.target.closest("[data-pin]");if(p){var c=find(p.getAttribute("data-pin"));c.pin=!c.pin;save();renderList();return}
- var d=e.target.closest("[data-del]");if(d){var id=d.getAttribute("data-del");chats=chats.filter(function(c){return c.id!==id});save();if(cur===id)newChat(false);renderList();return}
+ var mo=e.target.closest("[data-more]");if(mo){chatMenu(mo.getAttribute("data-more"));return}
  var it=e.target.closest(".it");if(it){if(ghost){ghost=false;$("ghost").style.background="";$("ghost").style.color=""}cur=it.getAttribute("data-id");setTab("ask");render();renderList();closeSide()}
 };
 $("ghost").onclick=function(){setGhost(!ghost);setTab("ask")};
-$("mbtn").onclick=function(e){e.stopPropagation();$("menu").classList.toggle("open")};
+$("mbtn").onclick=function(e){e.stopPropagation();$("pm").classList.remove("open");$("menu").classList.toggle("open")};
 $("menu").onclick=function(e){
  e.stopPropagation();
- var m=e.target.closest("[data-m]");if(m){mi=+m.getAttribute("data-m");modelUI();$("menu").classList.remove("open");toast("Модель: "+M[mi].n);return}
- var l=e.target.closest("[data-l]");if(l){lvl=l.getAttribute("data-l");modelUI()}
+ var m=e.target.closest("[data-m]");if(m){cfg.mi=+m.getAttribute("data-m");saveCfg();modelUI();$("menu").classList.remove("open");toast("Модель: "+M[cfg.mi].n);return}
+ var l=e.target.closest("[data-l]");if(l){cfg.lvl=l.getAttribute("data-l");saveCfg();modelUI()}
 };
-document.addEventListener("click",function(){$("menu").classList.remove("open")});
-$("plus").onclick=function(){toast("Загрузку фото и файлов подключим позже")};
-$("mic").onclick=function(){toast("Голосовой ввод подключим позже")};
+document.addEventListener("click",function(){$("menu").classList.remove("open");$("pm").classList.remove("open")});
+$("plus").onclick=function(e){e.stopPropagation();$("menu").classList.remove("open");renderPM();$("pm").classList.toggle("open")};
+$("pm").onclick=function(e){
+ e.stopPropagation();
+ var b=e.target.closest("button");if(!b)return;
+ var a=b.getAttribute("data-pm"),keep=false;
+ if(a==="file")$("file").click();
+ else if(a==="cam")$("cam").click();
+ else if(a==="doc")$("doc").click();
+ else if(a==="img"){imgMode=!imgMode;tool=null;toast(imgMode?"Опишите картинку и отправьте":"Режим картинок выключен")}
+ else if(a==="mem"){tool={id:"mem",n:"🧠 Запомнить",ph:"Что мне запомнить?"};imgMode=false}
+ else if(a==="memlist")memModal();
+ else if(a==="ah"){cfg.ah=!cfg.ah;saveCfg();keep=true}
+ else if(b.hasAttribute("data-md")){cfg.md=+b.getAttribute("data-md");saveCfg();keep=true}
+ else if(b.hasAttribute("data-ch")){cfg.ch=+b.getAttribute("data-ch");saveCfg();keep=true;toast("Персонаж: "+CH[cfg.ch].n)}
+ else if(b.hasAttribute("data-fm")){cfg.fm=+b.getAttribute("data-fm");saveCfg();keep=true}
+ else if(b.hasAttribute("data-tl")){var id=b.getAttribute("data-tl");tool=TL.filter(function(x){return x.id===id})[0];imgMode=false}
+ renderChips();
+ if(keep)renderPM();else $("pm").classList.remove("open");
+};
+$("file").onchange=function(){loadImg(this.files[0]);this.value=""};
+$("cam").onchange=function(){loadImg(this.files[0]);this.value=""};
+$("doc").onchange=function(){loadDoc(this.files[0]);this.value=""};
+$("attach").onclick=function(e){
+ var x=e.target.closest("[data-x]");if(!x)return;var k=x.getAttribute("data-x");
+ if(k==="att")att=null;if(k==="dc")dc=null;if(k==="tool")tool=null;if(k==="img")imgMode=false;if(k==="md"){cfg.md=0;saveCfg()}
+ renderChips();
+};
+$("mic").onclick=dictate;
 $("main").onclick=function(e){
  var p=e.target.getAttribute("data-p");if(p){$("inp").value=p;sync();send();return}
- var k=e.target.getAttribute("data-cp");if(k!==null){var c=find(cur);try{navigator.clipboard.writeText(c.msgs[+k].t).then(function(){toast("Скопировано")},function(){toast("Не удалось скопировать")})}catch(x){toast("Не удалось скопировать")}}
+ var c=find(cur),b;
+ if(b=e.target.closest("[data-cp]"))copyText(c.msgs[+b.getAttribute("data-cp")].t);
+ if(b=e.target.closest("[data-sp]"))speak(c.msgs[+b.getAttribute("data-sp")].t);
+ if(b=e.target.closest("[data-dl]"))dl(c.msgs[+b.getAttribute("data-dl")].t);
+ if(b=e.target.closest("[data-io]"))window.open(imgUrl(c.msgs[+b.getAttribute("data-io")].img),"_blank");
+ if(b=e.target.closest("[data-ia]")){var im=c.msgs[+b.getAttribute("data-ia")].img;im.s=Math.floor(Math.random()*1e6);save();render()}
+ if(e.target.closest("[data-rt]"))retry();
 };
-function setTab(t){
- tab=t;Array.prototype.forEach.call($("tabs").children,function(b){b.classList.toggle("on",b.getAttribute("data-t")===t)});
- $("main").style.display=t==="ask"?"flex":"none";$("imgp").style.display=t==="img"?"flex":"none";$("soon").style.display=t==="build"?"block":"none";
- $("dock").style.display=t==="build"?"none":"flex";$("inp").placeholder=t==="img"?"Опишите картинку":"Спросить Xoro";
- if(t==="build")$("soonT").textContent="Сборка";
- if(t==="img")renderImg();
-}
 $("tabs").onclick=function(e){var t=e.target.getAttribute("data-t");if(t)setTab(t)};
+
 try{if(typeof firebase!=="undefined"&&FB_CFG.apiKey){firebase.initializeApp(FB_CFG);gReady=true}}catch(e){}
+Array.prototype.forEach.call(document.querySelectorAll("[data-logo]"),function(e){e.innerHTML=logo()});
 var sess=ls("xoro_session");if(sess)start(sess);else showAuth("login");
 })();
 </script>
