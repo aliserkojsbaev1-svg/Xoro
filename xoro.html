@@ -149,8 +149,12 @@ textarea{flex:1;border:0;outline:0;resize:none;background:none;color:var(--text)
 </section>
 </div>
 <div id="shade"></div><div id="mod"></div><div id="toast"></div><div id="auth"></div>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script>
 (function(){
+var FB_CFG={apiKey:"AIzaSyCYRBk6DWQSmRy_hCXw5ufz3mqsmpzC6P8",authDomain:"xoro-10ddf.firebaseapp.com",projectId:"xoro-10ddf",appId:"1:1010481714163:web:400fdfa740259ce9a0b886"}; /* сюда вставляется firebaseConfig */
+var gReady=false;
 var $=function(i){return document.getElementById(i)};
 var cfg={name:"",asked:false,theme:"auto",url:"https://api.groq.com/openai/v1/chat/completions",key:"",model:"llama-3.3-70b-versatile"};
 var job=null;
@@ -171,7 +175,7 @@ function saveCfg(){if(user)ls("xoro_cfg_"+user,JSON.stringify(cfg))}
 function toast(t){var e=$("toast");e.textContent=t;e.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(function(){e.style.display="none"},2200)}
 function wide(){return window.innerWidth>=800}
 function theme(){var r=document.documentElement;if(cfg.theme==="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",cfg.theme)}
-function profile(){var l=cfg.name?cfg.name.charAt(0).toUpperCase():"?";$("av1").textContent=l;$("av2").textContent=l;$("nm").innerHTML=esc(cfg.name||"Гость")+'<small style="display:block;color:var(--mute);font-weight:400;font-size:12px;overflow:hidden;text-overflow:ellipsis">'+esc(user&&user!=="guest"?user:"Гостевой режим")+'</small>'}
+function profile(){var l=cfg.name?cfg.name.charAt(0).toUpperCase():"?",ph=user&&user!=="guest"?ls("xoro_ph_"+user):null;["av1","av2"].forEach(function(i){var e=$(i);e.textContent=ph?"":l;e.style.backgroundImage=ph?'url("'+ph+'")':"";e.style.backgroundSize="cover";e.style.backgroundPosition="center"});$("nm").innerHTML=esc(cfg.name||"Гость")+'<small style="display:block;color:var(--mute);font-weight:400;font-size:12px;overflow:hidden;text-overflow:ellipsis">'+esc(user&&user!=="guest"?user:"Гостевой режим")+'</small>'}
 
 /* Мозг Xoro: если в настройках есть ключ, идёт запрос к настоящей модели (формат OpenAI, подходят Groq, OpenRouter, Gemini).
    Без ключа работает демо-ответ. */
@@ -259,7 +263,7 @@ function niceName(e){var l=String(e).split("@")[0].replace(/[0-9]+$/,"");var p=l
 function sha(t){try{return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return("0"+x.toString(16)).slice(-2)}).join("")})}catch(x){return Promise.resolve(btoa(unescape(encodeURIComponent(t))))}}
 function showAuth(m){
  authMode=m;var r=m==="reg";
- $("auth").innerHTML='<div class="card" style="text-align:center"><div style="width:64px;height:64px;margin:0 auto">'+LOGO.replace("<svg ",'<svg style="width:100%;height:100%" ')+'</div><h3 style="margin-top:8px">Xoro</h3><div class="seg" style="margin:12px 0 4px"><button data-am="login" class="'+(r?"":"on")+'">Вход</button><button data-am="reg" class="'+(r?"on":"")+'">Регистрация</button></div><div style="text-align:left"><label>ПОЧТА</label><input id="a_em" type="email" autocomplete="email" placeholder="name@gmail.com"><label>ПАРОЛЬ</label><input id="a_pw" type="password" autocomplete="'+(r?"new-password":"current-password")+'" placeholder="Минимум 6 символов"></div><p id="a_err" style="color:#ff6b6b;min-height:20px;margin:10px 0 0"></p><button class="btn" style="margin-top:6px" data-ac="go">'+(r?"Создать аккаунт":"Войти")+'</button><button class="btn g" data-ac="guest">Продолжить без аккаунта</button><p style="margin-top:14px;font-size:12px">Аккаунт и чаты хранятся только в этом браузере. Настоящую регистрацию с подтверждением почты подключим вместе с сервером.</p></div>';
+ $("auth").innerHTML='<div class="card" style="text-align:center"><div style="width:64px;height:64px;margin:0 auto">'+LOGO.replace("<svg ",'<svg style="width:100%;height:100%" ')+'</div><h3 style="margin-top:8px">Xoro</h3><div class="seg" style="margin:12px 0 4px"><button data-am="login" class="'+(r?"":"on")+'">Вход</button><button data-am="reg" class="'+(r?"on":"")+'">Регистрация</button></div>'+(gReady?'<button class="btn g" data-ac="google" style="display:flex;align-items:center;justify-content:center;gap:10px;margin:12px 0 4px"><b style="background:#fff;color:#4285f4;border-radius:50%;width:24px;height:24px;display:grid;place-items:center">G</b>Продолжить через Google</button><p style="margin:6px 0;font-size:13px">или по почте</p>':'')+'<div style="text-align:left"><label>ПОЧТА</label><input id="a_em" type="email" autocomplete="email" placeholder="name@gmail.com"><label>ПАРОЛЬ</label><input id="a_pw" type="password" autocomplete="'+(r?"new-password":"current-password")+'" placeholder="Минимум 6 символов"></div><p id="a_err" style="color:#ff6b6b;min-height:20px;margin:10px 0 0"></p><button class="btn" style="margin-top:6px" data-ac="go">'+(r?"Создать аккаунт":"Войти")+'</button><button class="btn g" data-ac="guest">Продолжить без аккаунта</button><p style="margin-top:14px;font-size:12px">Аккаунт и чаты хранятся только в этом браузере. Настоящую регистрацию с подтверждением почты подключим вместе с сервером.</p></div>';
  $("auth").classList.add("open");
 }
 function doAuth(){
@@ -273,17 +277,26 @@ function doAuth(){
   ls("xoro_session",em);$("auth").classList.remove("open");start(em);
  });
 }
+function gLogin(){
+ var er=$("a_err");er.textContent="";
+ try{firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(function(r){
+  var u=r.user,em=(u.email||"").toLowerCase();
+  ls("xoro_gn_"+em,(u.displayName||"").split(" ")[0]);
+  if(u.photoURL)ls("xoro_ph_"+em,u.photoURL);
+  ls("xoro_session",em);$("auth").classList.remove("open");start(em);
+ }).catch(function(e){er.textContent=e.code==="auth/popup-closed-by-user"?"Окно входа закрыто":e.code==="auth/unauthorized-domain"?"Этот адрес сайта не добавлен в Firebase":"Ошибка входа: "+(e.code||e.message)})}catch(x){er.textContent="Google-вход не подключён"}
+}
 function start(u){
  if(job)clearInterval(job.timer);job=null;user=u;ghost=false;busy=false;mi=0;lvl="Быстро";cfg=JSON.parse(JSON.stringify(DEF));
  try{var s=JSON.parse(ls("xoro_cfg_"+u)||"{}");for(var k in s)cfg[k]=s[k]}catch(e){}
- if(!cfg.name&&u!=="guest")cfg.name=niceName(u);
+ if(!cfg.name&&u!=="guest")cfg.name=ls("xoro_gn_"+u)||niceName(u);
  try{chats=JSON.parse(ls("xoro_chats_"+u)||"[]")}catch(e){chats=[]}
  chats.forEach(function(c){c.msgs=c.msgs.filter(function(m){return !m.s&&m.t!=="…"})});
  $("ghost").style.background="";$("ghost").style.color="";
  theme();profile();newChat(false);modelUI();sync();setTab("ask");
 }
-function logout(){ls("xoro_session","");closeModal();chats=[];user=null;cur=null;showAuth("login")}
-$("auth").onclick=function(e){var t=e.target,m=t.getAttribute("data-am");if(m){showAuth(m);return}var a=t.getAttribute("data-ac");if(a==="guest"){ls("xoro_session","guest");$("auth").classList.remove("open");start("guest")}if(a==="go")doAuth()};
+function logout(){try{if(gReady)firebase.auth().signOut()}catch(e){}ls("xoro_session","");closeModal();chats=[];user=null;cur=null;showAuth("login")}
+$("auth").onclick=function(e){var t=e.target,m=t.getAttribute("data-am");if(m){showAuth(m);return}var a=t.getAttribute("data-ac");if(a==="guest"){ls("xoro_session","guest");$("auth").classList.remove("open");start("guest")}if(a==="go")doAuth();if(a==="google")gLogin()};
 $("auth").onkeydown=function(e){if(e.key==="Enter")doAuth()};
 function settings(){modal('<h3>Настройки</h3><label>ПОЧТА</label><p style="margin:0;font-weight:700;color:var(--text)">'+esc(user==="guest"?"Гостевой режим":user)+'</p><label>ИМЯ В ПРИВЕТСТВИИ</label><input id="f_name" maxlength="24" value="'+esc(cfg.name)+'"><label>ТЕМА</label><div class="seg" style="margin:0">'+[["auto","Авто"],["dark","Тёмная"],["light","Светлая"]].map(function(t){return'<button data-th="'+t[0]+'" class="'+(cfg.theme===t[0]?'on':'')+'">'+t[1]+'</button>'}).join("")+'</div><label>ПОДКЛЮЧЕНИЕ ИИ</label><input id="f_url" value="'+esc(cfg.url)+'" placeholder="Адрес API"><input id="f_key" type="password" value="'+esc(cfg.key)+'" placeholder="Ключ API" style="margin-top:8px"><input id="f_model" value="'+esc(cfg.model)+'" placeholder="Название модели" style="margin-top:8px"><p>Подходят Claude, Groq, OpenRouter, Gemini. Адрес Claude: https://api.anthropic.com/v1/messages, модель claude-haiku-5-5. Ключ хранится только у вас в браузере.</p><button class="btn" data-a="save">Сохранить</button><button class="btn g" data-a="clear">Очистить историю чатов</button><button class="btn g" data-a="out">'+(user==="guest"?"Войти или зарегистрироваться":"Выйти из аккаунта")+'</button><button class="btn g" data-a="close">Закрыть</button>')}
 $("mod").onclick=function(e){
@@ -330,6 +343,7 @@ function setTab(t){
  if(t==="img")renderImg();
 }
 $("tabs").onclick=function(e){var t=e.target.getAttribute("data-t");if(t)setTab(t)};
+try{if(typeof firebase!=="undefined"&&FB_CFG.apiKey){firebase.initializeApp(FB_CFG);gReady=true}}catch(e){}
 var sess=ls("xoro_session");if(sess)start(sess);else showAuth("login");
 })();
 </script>
