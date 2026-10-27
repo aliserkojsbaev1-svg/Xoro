@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#05060d">
+<meta name="theme-color" content="#000000">
 <title>Xoro</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23070a1a'/%3E%3Cpath d='M26 24L74 76' stroke='%234f8cff' stroke-width='13' stroke-linecap='round'/%3E%3Cpath d='M74 24L56 43.5M44 56.5L26 76' stroke='%232fe0c0' stroke-width='13' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23000'/%3E%3Cpath d='M30 30L70 70M70 30L30 70' stroke='white' stroke-width='12' stroke-linecap='round'/%3E%3Cg transform='rotate(-28 50 50)'%3E%3Cpath d='M4 50A46 17 0 0 1 96 50' stroke='white' stroke-opacity='.45' stroke-width='3.2' fill='none'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--fs:16px;--bg:#f3f5fb;--side:#fff;--card:#e9ebf3;--pop:#fff;--text:#12141c;--mute:#6c7080;--acc:#2f4fe0;--accbg:#dde5ff;--line:#d6d9e4;--grad:radial-gradient(120% 70% at 50% 115%,#c9d8ff 0%,#f3f5fb 70%);
+:root{--fs:16px;--bg:#ffffff;--side:#f6f6f7;--card:#efeff1;--pop:#ffffff;--text:#0b0b0c;--mute:#6b6b72;--acc:#0b0b0c;--onacc:#ffffff;--accbg:#e6e6ea;--line:#dcdce0;--grad:#ffffff;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#05060d;--side:#000;--card:#1d1d21;--pop:#17171b;--text:#f1f1f4;--mute:#8d90a0;--acc:#3556ea;--accbg:#12235e;--line:#2a2b33;--grad:radial-gradient(120% 75% at 50% 115%,#1b3190 0%,#0b1440 45%,#05060d 80%)}}
-:root[data-theme="dark"]{--bg:#05060d;--side:#000;--card:#1d1d21;--pop:#17171b;--text:#f1f1f4;--mute:#8d90a0;--acc:#3556ea;--accbg:#12235e;--line:#2a2b33;--grad:radial-gradient(120% 75% at 50% 115%,#1b3190 0%,#0b1440 45%,#05060d 80%)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000000;--side:#000000;--card:#161618;--pop:#121214;--text:#f5f5f5;--mute:#8a8a90;--acc:#f5f5f5;--onacc:#000000;--accbg:#232326;--line:#2a2a2e;--grad:#000000}}
+:root[data-theme="dark"]{--bg:#000000;--side:#000000;--card:#161618;--pop:#121214;--text:#f5f5f5;--mute:#8a8a90;--acc:#f5f5f5;--onacc:#000000;--accbg:#232326;--line:#2a2a2e;--grad:#000000}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;margin:0}
 body{background:var(--bg);color:var(--text);font:var(--fs)/1.55 Manrope,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
@@ -37,7 +37,7 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stro
 .it:hover,.it.on{background:var(--card)}
 .it span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .it button{color:var(--mute);padding:4px 10px;font-size:20px;font-weight:800}
-.plan{width:100%;background:var(--acc);color:#fff;border-radius:22px;padding:12px;font-weight:800;margin:8px 0}
+.plan{width:100%;background:var(--acc);color:var(--onacc);border-radius:22px;padding:12px;font-weight:800;margin:8px 0}
 .foot{display:flex;align-items:center;gap:10px;padding:4px 6px 2px}
 .foot b{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#9a6b5a,#c0846d);color:#fff;display:grid;place-items:center;font-weight:800;flex:none}
@@ -49,7 +49,7 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stro
 #mbtn{display:flex;align-items:center;gap:8px;padding:7px 12px 7px 8px;border-radius:22px;font-size:17px;font-weight:700}
 #mbtn:hover{background:var(--card)}
 #mbtn b{font-weight:600;color:var(--mute)}
-.dot{width:26px;height:26px;border-radius:9px;display:grid;place-items:center;font-size:14px;color:#fff;flex:none}
+.dot{width:26px;height:26px;border-radius:9px;display:grid;place-items:center;font-size:14px;background:var(--accbg);color:var(--text);flex:none}
 #menu{display:none;position:absolute;left:14px;top:62px;width:min(380px,94vw);background:var(--pop);border:1px solid var(--line);border-radius:26px;padding:14px;z-index:30;box-shadow:0 16px 50px #0007}
 #menu.open,#pm.open{display:block}
 .mh{color:var(--mute);font-size:13px;font-weight:800;padding:0 4px 10px}
@@ -65,12 +65,25 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stro
 .bars i.f{background:var(--acc)}
 .seg{display:flex;gap:4px;background:var(--card);border-radius:20px;padding:4px;margin-top:8px}
 .seg button{flex:1;padding:9px 4px;border-radius:16px;font-weight:700;color:var(--mute);font-size:15px}
-.seg button.on{background:var(--acc);color:#fff}
-#pm{display:none;position:absolute;left:12px;bottom:calc(92px + env(safe-area-inset-bottom,0px));width:min(430px,calc(100% - 24px));max-height:64vh;overflow-y:auto;background:var(--pop);border:1px solid var(--line);border-radius:24px;padding:8px 10px 14px;z-index:30;box-shadow:0 12px 40px #0007}
-#pm .mh{padding:12px 6px 8px}
-#pm .rw{display:flex;flex-wrap:wrap;gap:8px}
-#pm .rw button{background:var(--card);border-radius:16px;padding:9px 13px;font-weight:600;font-size:14.5px;text-align:left}
-#pm .rw button.on{background:var(--acc);color:#fff}
+.seg button.on{background:var(--acc);color:var(--onacc)}
+#pm{display:none;position:absolute;left:14px;bottom:calc(92px + env(safe-area-inset-bottom,0px));min-width:250px;background:var(--pop);border:1px solid var(--line);border-radius:26px;padding:8px;z-index:30;box-shadow:0 14px 44px #000a}
+#pm button{display:flex;gap:16px;align-items:center;width:100%;text-align:left;padding:15px 16px;border-radius:18px;font-weight:600;font-size:17px}
+#pm button:hover{background:var(--card)}
+#vo{position:fixed;inset:0;z-index:70;background:#000;color:#f5f5f5;display:none;flex-direction:column;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) 20px calc(26px + env(safe-area-inset-bottom,0px))}
+#vo.open{display:flex}
+#vo .ic{color:#f5f5f5}
+.vt{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:520px}
+#vst{font-family:Unbounded,Manrope,sans-serif;font-size:15px;color:#c8c8cc;text-align:center}
+#vorb{--bg:#0c0c0e;margin:auto;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#2a2a2e,#0c0c0e);border:1px solid #2c2c30;display:grid;place-items:center;color:#f5f5f5}
+#vorb .lg{width:100px;height:100px}
+#vo[data-s="listen"] #vorb{animation:br 2.4s ease-in-out infinite}
+#vo[data-s="think"] #vorb .lg{animation:sp 2.4s linear infinite}
+#vo[data-s="speak"] #vorb{animation:sk .9s ease-in-out infinite}
+@keyframes br{0%,100%{box-shadow:0 0 0 0 #ffffff22;transform:scale(1)}50%{box-shadow:0 0 0 26px #ffffff08;transform:scale(1.04)}}
+@keyframes sk{0%,100%{box-shadow:0 0 0 6px #ffffff18;transform:scale(1)}50%{box-shadow:0 0 0 34px #ffffff0a;transform:scale(1.08)}}
+#vtx{min-height:52px;max-width:520px;text-align:center;color:#e8e8ea;margin:0 0 8px;font-size:17px}
+#vhint{color:#7c7c82;font-size:13px;margin:0;text-align:center}
+.ty .lg{color:var(--text)}
 .gi{max-width:420px;border-radius:20px;overflow:hidden}
 .tw{overflow-x:auto;margin:8px 0}
 .msg table{border-collapse:collapse;min-width:100%}
@@ -97,7 +110,7 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stro
 .msg code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--card);padding:1px 6px;border-radius:6px}
 .msg pre code{background:none;padding:0}
 .msg h4{margin:10px 0 4px;font-size:1.05em}
-.msg a{color:var(--acc)}
+.msg a{color:var(--text);text-decoration:underline}
 .msg .l{min-height:1em}
 .acts{display:flex;gap:14px;margin-top:6px}
 .acts button{color:var(--mute);font-size:13px;font-weight:700}
@@ -113,7 +126,7 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stro
 .chip2 button{padding:6px 10px;font-weight:800;color:var(--mute)}
 .dock{width:calc(100% - 20px);max-width:780px;margin:6px auto 14px;background:var(--card);border-radius:34px;padding:10px 12px;display:flex;align-items:flex-end;gap:6px}
 textarea{flex:1;border:0;outline:0;resize:none;background:none;font-size:18px;max-height:160px;padding:10px 6px}
-.go{width:48px;height:48px;border-radius:50%;background:var(--acc);color:#fff;display:grid;place-items:center;flex:none}
+.go{width:48px;height:48px;border-radius:50%;background:var(--acc);color:var(--onacc);display:grid;place-items:center;flex:none}
 .go:disabled{opacity:.5}
 .opts{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 10px}
 .opts button{background:var(--card);border-radius:16px;padding:8px 14px;font-weight:700;font-size:14px;color:var(--mute)}
@@ -133,7 +146,7 @@ textarea{flex:1;border:0;outline:0;resize:none;background:none;font-size:18px;ma
 .bcard iframe{width:100%;height:440px;border:0;border-radius:14px;background:#fff}
 .bcard .ia{padding:8px 0 0}
 #shade{position:fixed;inset:0;background:#0007;z-index:15;display:none}
-#mod{position:fixed;inset:0;background:#000a;z-index:50;display:none;align-items:center;justify-content:center;padding:16px}
+#mod{position:fixed;inset:0;background:#000a;z-index:100;display:none;align-items:center;justify-content:center;padding:16px}
 #mod.open{display:flex}
 .card{background:var(--pop);border:1px solid var(--line);border-radius:28px;padding:22px;width:min(460px,100%);max-height:92vh;overflow-y:auto}
 .card h3{font-family:Unbounded,Manrope,sans-serif;font-weight:500;margin:0 0 6px}
@@ -141,7 +154,7 @@ textarea{flex:1;border:0;outline:0;resize:none;background:none;font-size:18px;ma
 .card input,.card textarea{width:100%;border-radius:16px;border:0;background:var(--card);padding:0 14px;outline:0;height:46px;font-size:16px}
 .card textarea{height:92px;padding:12px 14px;resize:none}
 .card p{color:var(--mute);font-size:14px;margin:6px 0}
-.btn{width:100%;padding:13px;border-radius:20px;background:var(--acc);color:#fff;font-weight:800;margin-top:16px}
+.btn{width:100%;padding:13px;border-radius:20px;background:var(--acc);color:var(--onacc);font-weight:800;margin-top:16px}
 .btn.g{background:var(--card);color:var(--text);margin-top:8px}
 .btn.r{color:#ff6b6b}
 #auth{position:fixed;inset:0;z-index:80;background:var(--grad);background-color:var(--bg);display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
@@ -152,10 +165,6 @@ textarea{flex:1;border:0;outline:0;resize:none;background:none;font-size:18px;ma
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<linearGradient id="xg" gradientUnits="userSpaceOnUse" x1="10" y1="10" x2="90" y2="90"><stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#9b6bff"/></linearGradient>
-<linearGradient id="xg2" gradientUnits="userSpaceOnUse" x1="90" y1="10" x2="10" y2="90"><stop offset="0" stop-color="#2fe0c0"/><stop offset="1" stop-color="#4f8cff"/></linearGradient>
-</defs></svg>
 <div id="app">
 <aside id="side">
  <div class="sh"><span class="brand"><i class="lg" data-logo></i>Xoro</span><button class="ic" id="fold" aria-label="Свернуть"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 4v16"/></svg></button></div>
@@ -183,7 +192,7 @@ textarea{flex:1;border:0;outline:0;resize:none;background:none;font-size:18px;ma
   <div class="av" id="av2"></div>
  </div>
  <div id="menu"></div>
- <div id="pm"></div>
+ <div id="pm"><button data-pm="cam"><svg class="i" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Камера</button><button data-pm="file"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg>Галерея</button><button data-pm="doc"><svg class="i" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg>Файлы</button></div>
  <main id="main"></main>
   <div id="bldp"><p class="note" id="bnote">Опишите сайт или приложение внизу, например «лендинг кофейни» или «калькулятор чаевых». Xoro соберёт готовую страницу.</p><div id="bres"></div></div>
  <div id="attach"></div>
@@ -196,7 +205,9 @@ textarea{flex:1;border:0;outline:0;resize:none;background:none;font-size:18px;ma
 </section>
 </div>
 <input type="file" id="file" accept="image/*" hidden><input type="file" id="cam" accept="image/*" capture="environment" hidden><input type="file" id="doc" accept=".pdf,.txt,.md,.csv,.json,.html,.css,.js,.py,.xml,.log,text/*,application/pdf" hidden>
+<div id="vo"><div class="vt"><button class="ic" id="vclose" aria-label="Закрыть"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button><span id="vst">Слушаю…</span><button class="ic" id="vvoice" aria-label="Голос"><svg class="i" viewBox="0 0 24 24"><path d="M3 12h2M7 8v8M11 5v14M15 8v8M19 11v2"/></svg></button></div><button id="vorb" aria-label="Шар"><i class="lg" data-logo></i></button><p id="vtx"></p><p id="vhint">Нажми на шар, чтобы отправить сразу</p></div>
 <div id="shade"></div><div id="mod"></div><div id="toast"></div><div id="auth"></div>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script>
@@ -204,44 +215,31 @@ textarea{flex:1;border:0;outline:0;resize:none;background:none;font-size:18px;ma
 var $=function(i){return document.getElementById(i)};
 var FB_CFG={apiKey:"AIzaSyCYRBk6DWQSmRy_hCXw5ufz3mqsmpzC6P8",authDomain:"xoro-10ddf.firebaseapp.com",projectId:"xoro-10ddf",appId:"1:1010481714163:web:400fdfa740259ce9a0b886"};
 var gReady=false;
+var TG=(window.Telegram&&Telegram.WebApp&&Telegram.WebApp.initData)?Telegram.WebApp:null,tgun="";
+function acct(){return TG&&user&&/^tg/.test(user)?"Telegram"+(tgun?" @"+tgun:""):(user&&user!=="guest"?user:"Гостевой режим")}
+function openUrl(u){if(TG&&TG.openLink)TG.openLink(u);else window.open(u,"_blank")}
 var AI={url:"https://xoro-ai.aliserkojsbaev1.workers.dev",model:"gemini-3.5-flash-lite"};
-var DEF={name:"",theme:"auto",fs:16,mi:0,lvl:"Быстро",instr:"",anim:true,md:0,ch:0,fm:0,ah:false,mem:[]};
-var cfg=JSON.parse(JSON.stringify(DEF)),user=null,authMode="login",chats=[],cur=null,ghost=false,busy=false,job=null,tab="ask",att=null,dc=null,tool=null,imgMode=false,rec=null,aid=null;
+var DEF={name:"",theme:"auto",fs:16,mq:0,anim:true,voice:"",vrate:1};
+var vm={on:false,st:"",sr:null,mr:null,tok:0,idle:0,chunks:[],stream:null,tm:null};
+var stT=null,stTxt="Думаю…";
+var PH={
+ d:["Думаю над вопросом…","Разбираюсь в деталях…","Подбираю слова…","Проверяю себя…","Пишу ответ…"],
+ p:["Рассматриваю фото…","Ищу детали на снимке…","Складываю общую картину…","Пишу ответ…"],
+ f:["Читаю документ…","Выделяю главное…","Сверяю детали…","Пишу ответ…"],
+ g:["Придумываю композицию…","Подбираю цвета и свет…","Рисую…"],
+ b:["Продумываю структуру…","Настраиваю экран…","Пишу код…","Проверяю вёрстку…"]};
+var cfg=JSON.parse(JSON.stringify(DEF)),user=null,authMode="login",chats=[],cur=null,ghost=false,busy=false,job=null,tab="ask",att=null,dc=null,rec=null,aid=null;
 var M=[
- {n:"Авто",d:"Сам подберу стиль под задачу",t:"Умный выбор",ic:"✦",c:"#4f8cff,#9b6bff",p:0,mt:1500,s:""},
- {n:"3.1 Xorix",d:"Мгновенные ответы на каждый день",t:"Быстрая",ic:"⚡",c:"#2fe0c0,#4f8cff",p:1,mt:700,s:"Отвечай кратко и быстро."},
- {n:"3.5 Xorium",d:"Глубокие рассуждения и анализ",t:"Баланс",ic:"◆",c:"#9b6bff,#ff6bd5",p:2,mt:1200,s:"Отвечай сбалансированно: с объяснением и примерами."},
- {n:"4 Xora",d:"Самые сложные задачи и проекты",t:"Максимум",ic:"✺",c:"#ff9b4f,#ff4f6b",p:3,mt:1500,s:"Рассуждай глубоко: структурируй ответ и разбирай сложные задачи шаг за шагом."}];
-var CH=[
- {n:"Xoro",s:""},
- {n:"Шутник",s:"Сегодня ты в образе Шутника: больше юмора, мемов и лёгкого сарказма, но по делу и без обид."},
- {n:"Друг",s:"Сегодня ты в образе Друга: общайся тепло, неформально и поддерживай."},
- {n:"Наставник",s:"Сегодня ты в образе Наставника: спокойно, чётко, по шагам, мотивируй."},
- {n:"Эксперт",s:"Сегодня ты в образе Эксперта: серьёзно, точно и структурированно, без шуток."}];
-var MD=[
- {n:"Обычный",s:""},
- {n:"Коротко",s:"Режим «Коротко»: давай только ответ, без объяснений."},
- {n:"Объясни",s:"Режим «Объясни»: объясняй подробно и простыми словами, с примерами."},
- {n:"Учитель",s:"Режим «Учитель»: объясни тему, а потом задай пользователю пару проверочных вопросов."},
- {n:"Давай вместе",s:"Режим «Давай вместе»: не выдавай готовый ответ сразу, а помогай дойти до решения самому: наводящие вопросы и подсказки по шагам."}];
-var FM=[{n:"Обычный",s:""},{n:"Дружеский",s:"Говори на «ты», дружески и неформально."},{n:"Официальный",s:"Пиши официально и вежливо, без сленга и эмодзи."}];
-var TL=[
- {id:"better",n:"✨ Сделай лучше",ph:"Вставьте текст, который улучшить",s:"Задача: улучши присланный текст (стиль, ясность, грамматика), сохрани смысл и язык. Сначала дай улучшенный вариант, затем одной-двумя строками скажи, что изменил."},
- {id:"parse",n:"🔍 Разбор сообщения",ph:"Вставьте сообщение для разбора",s:"Задача: проанализируй присланное сообщение: что человек имеет в виду, какой тон и подтекст, и предложи 2-3 варианта ответа."},
- {id:"critic",n:"🧐 Критик",ph:"Опишите идею или вставьте текст",s:"Задача: ты Критик. Найди ошибки и слабые места по пунктам, конструктивно, затем предложи, как улучшить."},
- {id:"debate",n:"⚔️ Дебаты",ph:"Напишите своё мнение, и я поспорю",s:"Задача: Дебаты. Займи позицию, противоположную мнению пользователя, и спорь аргументированно и уважительно. В конце кратко подведи итог."},
- {id:"brain",n:"💡 Мозговой штурм",ph:"Тема для идей",s:"Задача: мозговой штурм. Выдай как можно больше разных идей списком (не меньше 10), от обычных до необычных, без оценки."},
- {id:"e5",n:"👶 Как 5-летнему",ph:"Что объяснить?",s:"Задача: объясни тему так, чтобы понял пятилетний ребёнок: простые слова и сравнения."},
- {id:"sch",n:"🎒 Как школьнику",ph:"Что объяснить?",s:"Задача: объясни тему на уровне школьника, простыми словами и с примерами."},
- {id:"exp",n:"🎓 Как специалисту",ph:"Что объяснить?",s:"Задача: объясни тему на уровне специалиста, точно и с терминами."},
- {id:"tr",n:"🌍 Переводчик",ph:"Текст и язык, например: на английский",s:"Задача: переводчик. Переведи присланный текст на язык, который указал пользователь; если язык не указан, русский текст переводи на английский, а остальные на русский. Верни перевод, а затем кратко отметь особенности, если они есть."}];
-var IMGRX=/^\s*(нарисуй|сгенерируй (мне )?(картинк|изображен|фото)|создай (мне )?(картинк|изображен)|сделай (мне )?(картинк|изображен)|draw\b|generate (an? )?(image|picture))/i;
-var PERSONA="Ты Xoro, новая ИИ-модель, созданная разработчиком Zeko. Всегда отвечай как Xoro. Никогда не упоминай другие ИИ-модели и компании (Google, Gemini, OpenAI, ChatGPT, Anthropic, Claude и подобные), даже если спросят напрямую. Если спрашивают, на чём ты основан, как устроен, какая у тебя архитектура или данные обучения, отвечай, что это внутренние детали разработки Zeko, которыми ты не делишься, и предложи помочь с задачей. Не выдумывай технических подробностей о себе. ХАРАКТЕР. 1) Дружелюбный: общаешься спокойно и доброжелательно, никогда не унижаешь за ошибки, можешь поддержать шутку и неформальный разговор. 2) Умный, но не заносчивый: объясняешь сложное простыми словами, не используешь сложные термины без нужды, ошибки пользователя исправляешь мягко. 3) Адаптивный: пользователь пишет коротко, отвечай коротко; просит подробно, объясняй подробно; пишет на русском, отвечай по-русски; просит казахский, отвечай по-казахски; нужен школьный стиль, не пиши как научная статья. 4) Не просто отвечаешь, а помогаешь: вместо «Нет, это неправильно» говори, например: «Почти правильно. Здесь нужно использовать has been, потому что это Present Perfect Continuous». 5) В обычном разговоре можешь быть неформальным («Да, понял», «Смотри, тут всё проще», «Ага, теперь понял, что ты имеешь в виду»), а в официальных текстах стиль автоматически становится серьёзнее. 6) Честный: если чего-то не знаешь или не уверен, не выдумывай ответ, а скажи: «Я не уверен в этом. Давай проверим.» 7) Терпеливый: если человек спрашивает одно и то же несколько раз, объясняй снова, но другим способом. 8) Помнишь, о чём идёт разговор, и не заставляешь пользователя повторять всё заново. ЛИЧНОСТЬ. У тебя свой стиль юмора: лёгкий, иногда с лёгким сарказмом и мемами, но никогда не обидный и не в каждом сообщении. Настроение подстраивай под ситуацию: спокойное, весёлое или серьёзное. Есть несколько характерных выражений («Давай разберёмся», «Смотри, тут всё проще»), но не повторяй их постоянно. Постепенно замечай, какой стиль нравится пользователю (коротко или подробно, формально или нет), и подстраивайся. У тебя нет доступа к интернету и свежим новостям: не говори, что что-то искал в сети, и честно предупреждай, если информация могла устареть. ПРИВЕТСТВИЕ. На простое приветствие («привет», «здравствуй», «hi») отвечай ровно: «Привет! Чем я могу помочь?» (на другом языке эквивалентно, на этом же языке), без имени пользователя и без лишних слов. Не обращайся к пользователю по имени. ЭМОДЗИ. Используй естественно и умеренно: не в каждом предложении, обычно от 0 до 3 на сообщение; в серьёзных, учебных и официальных ответах редко или совсем не используй; не повторяй один и тот же эмодзи слишком часто. Обычный разговор: 🙂 😄 👍. Радость и успех: 🎉 🔥. Объяснение: 💡. Важное предупреждение: ⚠️. Шутка: 😂. Поддержка: ❤️. Технические темы: 🤖 ⚙️. Пиши понятно, Markdown (списки, таблицы, код) используй только когда он помогает.";
-function logo(){return'<svg viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-width="13"><path d="M26 24L74 76" stroke="url(#xg)"/><path d="M74 24L56 43.5M44 56.5L26 76" stroke="url(#xg2)"/><circle cx="82" cy="18" r="5" fill="url(#xg2)" stroke="none"/></svg>'}
+ {n:"3.1 Xorix",d:"Быстрые ответы на каждый день",ic:"⚡",tier:0,mt:1500,s:"Отвечай быстро и по делу."},
+ {n:"3.5 Xorium",d:"Умнее: анализ и рассуждения",ic:"◆",tier:1,mt:2500,s:"Отвечай вдумчиво: с анализом и пояснениями."},
+ {n:"4 Xora",d:"Самая мощная: сложные задачи",ic:"✺",tier:2,mt:3500,s:"Рассуждай глубоко: разбирай сложные задачи шаг за шагом и структурируй ответ."}];
+var IMGRX=/^\s*(привет[!,. ]*)?(нарисуй|draw)(?![а-яёa-z])|(сгенерируй|сгенерируйте|создай|сделай|generate|create|draw|нарисуй)[^.!?\n]{0,15}(картин|изображен|рисун|image|picture)/i;
+var PERSONA="Ты Xoro, новая ИИ-модель, созданная разработчиком Zeko. Всегда отвечай как Xoro. Никогда не упоминай другие ИИ-модели и компании (Google, Gemini, OpenAI, ChatGPT, Anthropic, Claude и подобные), даже если спросят напрямую. Если спрашивают, на чём ты основан, как устроен, какая у тебя архитектура или данные обучения, отвечай, что это внутренние детали разработки Zeko, которыми ты не делишься, и предложи помочь с задачей. Не выдумывай технических подробностей о себе. ХАРАКТЕР. 1) Дружелюбный: общаешься спокойно и доброжелательно, никогда не унижаешь за ошибки, можешь поддержать шутку и неформальный разговор. 2) Умный, но не заносчивый: объясняешь сложное простыми словами, не используешь сложные термины без нужды, ошибки пользователя исправляешь мягко. 3) Адаптивный: пользователь пишет коротко, отвечай коротко; просит подробно, объясняй подробно; пишет на русском, отвечай по-русски; просит казахский, отвечай по-казахски; нужен школьный стиль, не пиши как научная статья. 4) Не просто отвечаешь, а помогаешь: вместо «Нет, это неправильно» говори, например: «Почти правильно. Здесь нужно использовать has been, потому что это Present Perfect Continuous». 5) В обычном разговоре можешь быть неформальным («Да, понял», «Смотри, тут всё проще», «Ага, теперь понял, что ты имеешь в виду»), а в официальных текстах стиль автоматически становится серьёзнее. 6) Честный: если чего-то не знаешь или не уверен, не выдумывай ответ, а скажи: «Я не уверен в этом. Давай проверим.» 7) Терпеливый: если человек спрашивает одно и то же несколько раз, объясняй снова, но другим способом. 8) Помнишь, о чём идёт разговор, и не заставляешь пользователя повторять всё заново. ЛИЧНОСТЬ. У тебя свой стиль юмора: лёгкий, иногда с лёгким сарказмом и мемами, но никогда не обидный и не в каждом сообщении. Настроение подстраивай под ситуацию: спокойное, весёлое или серьёзное. Есть несколько характерных выражений («Давай разберёмся», «Смотри, тут всё проще»), но не повторяй их постоянно. Постепенно замечай, какой стиль нравится пользователю (коротко или подробно, формально или нет), и подстраивайся. У тебя нет доступа к интернету и свежим новостям, но текущие дата и время тебе известны из системной информации ниже. Не говори, что что-то искал в сети, и честно предупреждай, если информация могла устареть. ПРИВЕТСТВИЕ. На простое приветствие («привет», «здравствуй», «hi») отвечай ровно: «Привет! Чем я могу помочь?» (на другом языке эквивалентно, на этом же языке), без имени пользователя и без лишних слов. Не обращайся к пользователю по имени. ЭМОДЗИ. Используй естественно и умеренно: не в каждом предложении, обычно от 0 до 3 на сообщение; в серьёзных, учебных и официальных ответах редко или совсем не используй; не повторяй один и тот же эмодзи слишком часто. Обычный разговор: 🙂 😄 👍. Радость и успех: 🎉 🔥. Объяснение: 💡. Важное предупреждение: ⚠️. Шутка: 😂. Поддержка: ❤️. Технические темы: 🤖 ⚙️. Пиши понятно, Markdown (списки, таблицы, код) используй только когда он помогает.";
+function logo(){return'<svg viewBox="0 0 100 100" fill="none" stroke-linecap="round"><g transform="rotate(-28 50 50)"><path d="M4 50A46 17 0 0 1 96 50" stroke="currentColor" stroke-opacity=".45" stroke-width="3.2"/></g><path d="M30 30L70 70M70 30L30 70" stroke="currentColor" stroke-width="12"/><g transform="rotate(-28 50 50)"><path d="M96 50A46 17 0 0 1 4 50" style="stroke:var(--bg)" stroke-width="8.5"/><path d="M96 50A46 17 0 0 1 4 50" stroke="currentColor" stroke-width="3.2"/></g></svg>'}
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function find(id){return chats.filter(function(c){return c.id===id})[0]}
-function save(){if(!user)return;ls("xoro_chats_"+user,JSON.stringify(chats.filter(function(c){return !c.priv&&c.msgs.length}),function(k,v){return(k==="full"||k==="dt")?undefined:v}))}
+function save(){if(!user)return;ls("xoro_chats_"+user,JSON.stringify(chats.filter(function(c){return !c.priv&&c.msgs.length}),function(k,v){return(k==="full"||k==="dt"||k==="au")?undefined:v}))}
 function saveCfg(){if(user)ls("xoro_cfg_"+user,JSON.stringify(cfg))}
 function toast(t){var e=$("toast");e.textContent=t;e.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(function(){e.style.display="none"},2400)}
 function wide(){return window.innerWidth>=800}
@@ -249,7 +247,7 @@ function applyLook(){var r=document.documentElement;if(cfg.theme==="auto")r.remo
 function profile(){
  var l=cfg.name?cfg.name.charAt(0).toUpperCase():"?",ph=user&&user!=="guest"?ls("xoro_ph_"+user):null;
  ["av1","av2"].forEach(function(i){var e=$(i);e.textContent=ph?"":l;e.style.backgroundImage=ph?'url("'+ph+'")':"";e.style.backgroundSize="cover";e.style.backgroundPosition="center"});
- $("nm").innerHTML=esc(cfg.name||"Гость")+'<small style="display:block;color:var(--mute);font-weight:400;font-size:12px;overflow:hidden;text-overflow:ellipsis">'+esc(user&&user!=="guest"?user:"Гостевой режим")+'</small>';
+ $("nm").innerHTML=esc(cfg.name||"Гость")+'<small style="display:block;color:var(--mute);font-weight:400;font-size:12px;overflow:hidden;text-overflow:ellipsis">'+esc(acct())+'</small>';
 }
 
 /* Markdown */
@@ -278,8 +276,8 @@ function md(s){
 }
 
 /* ИИ через Worker */
-function callAI(msgs,mt){
- return fetch(AI.url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:AI.model,messages:msgs,max_tokens:mt||1500})})
+function callAI(msgs,mt,tier){
+ return fetch(AI.url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({tier:tier||0,messages:msgs,max_tokens:mt||1500})})
  .then(function(r){return r.text().then(function(t){
   var d=null;try{d=JSON.parse(t)}catch(e){}
   if(d&&d.choices&&d.choices[0]&&d.choices[0].message)return d.choices[0].message.content||"";
@@ -287,29 +285,27 @@ function callAI(msgs,mt){
  })});
 }
 function errText(e){return e.status===429?"Сегодня Xoro перегружен: лимит запросов исчерпан. Попробуйте чуть позже.":e.status===403?"Доступ закрыт. Откройте Xoro по основной ссылке сайта.":"Не получилось связаться с Xoro. Проверьте интернет и попробуйте ещё раз."}
-function sysPrompt(T){
- var p=PERSONA+" "+M[cfg.mi].s;
- if(CH[cfg.ch||0].s)p+=" "+CH[cfg.ch].s;
- if(FM[cfg.fm||0].s)p+=" "+FM[cfg.fm].s;
- if(MD[cfg.md||0].s)p+=" "+MD[cfg.md].s;
- if(cfg.ah)p+=" В конце каждого ответа добавляй отдельной строкой «Уверенность: высокая, средняя или низкая» с короткой причиной; если не уверен, скажи об этом прямо.";
- if(cfg.mem&&cfg.mem.length)p+=" Пользователь попросил запомнить: "+cfg.mem.join("; ")+".";
- if(T)p+=" "+T.s;
- return p;
+function nowInfo(){
+ var d=new Date(),tz="UTC";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"UTC"}catch(e){}
+ var loc="";try{loc=d.toLocaleString("ru-RU",{timeZone:tz,weekday:"long",day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"})}catch(e){loc=d.toString()}
+ var Z=[["UTC","UTC"],["Лондон","Europe/London"],["Париж","Europe/Paris"],["Москва","Europe/Moscow"],["Стамбул","Europe/Istanbul"],["Дубай","Asia/Dubai"],["Ташкент","Asia/Tashkent"],["Алматы","Asia/Almaty"],["Дели","Asia/Kolkata"],["Бангкок","Asia/Bangkok"],["Пекин","Asia/Shanghai"],["Токио","Asia/Tokyo"],["Сидней","Australia/Sydney"],["Окленд","Pacific/Auckland"],["Гонолулу","Pacific/Honolulu"],["Лос-Анджелес","America/Los_Angeles"],["Чикаго","America/Chicago"],["Нью-Йорк","America/New_York"],["Сан-Паулу","America/Sao_Paulo"],["Каир","Africa/Cairo"],["Найроби","Africa/Nairobi"]];
+ var z=Z.map(function(x){try{return x[0]+" "+d.toLocaleTimeString("ru-RU",{timeZone:x[1],hour:"2-digit",minute:"2-digit"})}catch(e){return""}}).filter(Boolean).join(", ");
+ return"ТЕКУЩЕЕ ВРЕМЯ (точные данные с устройства пользователя, они важнее твоей памяти и твоих данных обучения): "+loc+", часовой пояс пользователя "+tz+", время UTC "+d.toISOString().slice(0,16).replace("T"," ")+". Сейчас в городах: "+z+". На вопросы о дате, дне недели, времени и годе отвечай по этим данным, а не по памяти. Для любого другого города или страны определи его часовой пояс (IANA) с учётом летнего времени и посчитай время от UTC.";
 }
+function sysPrompt(){return PERSONA+" "+M[cfg.mq].s+" "+nowInfo()}
 function askXoro(c){
  var hist=c.msgs.slice(0,-1).filter(function(x){return !x.err});
  var lu=null;hist.forEach(function(x){if(x.r==="u")lu=x});
- var T=lu&&lu.tl?TL.filter(function(x){return x.id===lu.tl})[0]:null;
- var msgs=[{role:"system",content:sysPrompt(T)}].concat(hist.map(function(x){
+ var msgs=[{role:"system",content:sysPrompt()}].concat(hist.map(function(x){
   if(x.r==="a")return{role:"assistant",content:x.img?"[Создана картинка по запросу: "+x.img.e+"]":x.t};
+  if(x.au&&x===lu)return{role:"user",content:[{type:"text",text:"Это голосовое сообщение пользователя. Ответь на него по сути, без расшифровки."},{type:"input_audio",input_audio:{data:x.au,format:"wav"}}]};
   var tx=x.t||(x.dt?"Кратко перескажи документ.":"");
   if(x.dt)tx+="\n\n[Документ «"+x.doc+"»]\n"+x.dt;
   else if(x.doc)tx+=" (был прикреплён документ «"+x.doc+"»)";
   if(x.full)return{role:"user",content:[{type:"text",text:tx||"Опиши это изображение."},{type:"image_url",image_url:{url:x.full}}]};
   return{role:"user",content:tx||"(фото)"};
  }));
- return callAI(msgs,M[cfg.mi].mt);
+ return callAI(msgs,M[cfg.mq].mt,M[cfg.mq].tier);
 }
 
 /* Чат */
@@ -320,7 +316,7 @@ function render(){
  m.innerHTML=c.msgs.map(function(x,i){
   if(x.r==="u")return'<div class="msg u">'+(x.th?'<img src="'+x.th+'" alt="">':"")+(x.doc?'<div>📄 '+esc(x.doc)+'</div>':"")+esc(x.t)+'</div>';
   if(x.s)return'<div class="msg a"></div>';
-  if(x.t==="…")return'<div class="msg a ty"><i class="lg">'+logo()+'</i><span>Xoro отвечает…</span></div>';
+  if(x.t==="…")return'<div class="msg a ty"><i class="lg">'+logo()+'</i><span>'+esc(stTxt)+'</span></div>';
   if(x.img)return'<div class="msg a"><div class="gi"><div class="ph" style="aspect-ratio:1"><img src="'+imgUrl(x.img)+'" alt=""></div></div><div class="acts"><button data-io="'+i+'">Открыть</button><button data-ia="'+i+'">Ещё вариант</button></div></div>';
   return'<div class="msg a'+(x.err?' er':'')+'">'+md(x.t)+'<div class="acts"><button data-cp="'+i+'">Копировать</button><button data-sp="'+i+'">Слушать</button><button data-dl="'+i+'">Скачать</button>'+(i===last&&!busy?'<button data-rt="1">Повторить</button>':"")+'</div></div>';
  }).join("");
@@ -333,7 +329,7 @@ function renderList(){
  var pn=a.filter(function(c){return c.pin}),rc=a.filter(function(c){return !c.pin});
  $("list").innerHTML=(pn.length?'<div class="sec">Закреплённые</div>'+pn.map(item).join(""):"")+(rc.length?'<div class="sec">Недавние</div>'+rc.map(item).join(""):"")||'<p class="sec">Здесь появятся ваши чаты</p>';
 }
-function newChat(priv){var c={id:"c"+Date.now(),title:"Новый чат",msgs:[],priv:!!priv};chats.push(c);cur=c.id;render();renderList()}
+function newChat(priv){cfg.mq=0;var c={id:"c"+Date.now(),title:"Новый чат",msgs:[],priv:!!priv};chats.push(c);cur=c.id;render();renderList();modelUI()}
 function setGhost(on){
  ghost=on;chats=chats.filter(function(c){return !c.priv});
  $("ghost").style.background=on?"var(--accbg)":"";$("ghost").style.color=on?"var(--acc)":"";
@@ -346,26 +342,38 @@ function sync(){
  $("goI").innerHTML=busy?'<rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" stroke="none"/>':arrow?'<path d="M12 19V5M6 11l6-6 6 6" stroke-width="2.4"/>':'<path d="M5 10v4M9 6v12M13 9v6M17 11v2" stroke-width="2.4"/>';
  $("inp").style.height="auto";$("inp").style.height=Math.min($("inp").scrollHeight,160)+"px";
 }
+function stStop(){clearInterval(stT);stT=null}
+function stUpd(){var e=document.querySelector("#main .ty span");if(e)e.textContent=stTxt;var b=document.querySelector("#bres .ty span");if(b)b.textContent=stTxt;if(vm.on&&vm.st==="think")$("vst").textContent=stTxt}
+function stStart(k){stStop();var a=PH[k]||PH.d,i=0;stTxt=a[0];stUpd();stT=setInterval(function(){if(i<a.length-1)i++;stTxt=a[i];stUpd()},1900)}
 function stop(){
  if(!job)return;
- clearInterval(job.timer);var l=job.c.msgs[job.c.msgs.length-1];
+ stStop();clearInterval(job.timer);var l=job.c.msgs[job.c.msgs.length-1];
  l.t=job.full||"Остановлено.";l.s=false;busy=false;job=null;save();sync();render();
 }
 function run(c){
+ var lu=null;c.msgs.forEach(function(x){if(x.r==="u")lu=x});
+ stStart(lu&&lu.au?"d":lu&&lu.full?"p":lu&&lu.dt?"f":"d");
  c.msgs.push({r:"a",t:"…"});busy=true;sync();render();save();
  var j=job={c:c,full:"",timer:null};
  askXoro(c).then(function(a){return{t:a||"Пустой ответ, попробуйте ещё раз.",e:!a}},function(e){return{t:errText(e),e:true}}).then(function(res){
   if(job!==j)return;
+  stStop();
   var last=c.msgs[c.msgs.length-1],a=res.t;last.err=res.e;j.full=a;
-  if(res.e||!cfg.anim){last.t=a;busy=false;job=null;save();sync();render();return}
+  function fin(){busy=false;job=null;save();sync();render();voiceAfter(res)}
+  if(res.e||!cfg.anim||vm.on){last.t=a;fin();return}
   last.s=true;last.t="";render();
   var el=$("main").lastElementChild,m=$("main"),w=a.split(/(\s+)/),i=0,st=Math.max(2,Math.ceil(w.length/90));
   j.timer=setInterval(function(){
    i+=st;
-   if(i>=w.length){clearInterval(j.timer);last.s=false;last.t=a;busy=false;job=null;save();sync();render();return}
+   if(i>=w.length){clearInterval(j.timer);last.s=false;last.t=a;fin();return}
    el.textContent=w.slice(0,i).join("");m.scrollTop=m.scrollHeight;
   },28);
  });
+}
+function postUser(m){
+ var c=find(cur);if(!c){newChat(ghost);c=find(cur)}
+ if(!c.msgs.length)c.title=(m.t||"Фото").slice(0,40);
+ c.msgs.push(m);$("inp").value="";renderChips();renderList();run(c);
 }
 function retry(){
  var c=find(cur);if(busy||!c)return;
@@ -384,25 +392,16 @@ function send(){
  var t=$("inp").value.trim();
  if(tab==="build"){if(!t){dictate();return}$("inp").value="";sync();doBuild(t);return}
  if(busy){stop();return}
- if(!t&&!att&&!dc){dictate();return}
+ if(!t&&!att&&!dc){voiceOpen();return}
  var c=find(cur);if(!c){newChat(ghost);c=find(cur)}
  function push(m){if(!c.msgs.length)c.title=(m.t||"Фото").slice(0,40);c.msgs.push(m)}
- var ms=t.match(/^запомни[:,]?\s+(.+)/i);
- if(ms||(tool&&tool.id==="mem"&&t)){
-  var f=(ms?ms[1]:t).slice(0,200);cfg.mem=(cfg.mem||[]).concat(f).slice(-20);saveCfg();tool=null;
-  push({r:"u",t:t});c.msgs.push({r:"a",t:"Запомнил: «"+f+"» 🙂"});$("inp").value="";renderChips();renderList();render();save();return;
- }
  var cv=att||dc?null:calc(t);
  if(cv!==null){push({r:"u",t:t});c.msgs.push({r:"a",t:"= "+cv});$("inp").value="";sync();renderList();render();save();return}
- if(imgMode||IMGRX.test(t)){
-  if(!t){toast("Опишите картинку");return}
-  push({r:"u",t:t});$("inp").value="";imgMode=false;renderChips();renderList();imgChat(c,t);return;
- }
+ if(IMGRX.test(t)){push({r:"u",t:t});$("inp").value="";sync();renderList();imgChat(c,t);return}
  var m={r:"u",t:t};
  if(att){m.th=att.th;m.full=att.full;att=null}
  if(dc){m.doc=dc.name;m.dt=dc.text;dc=null}
- if(tool){m.tl=tool.id;tool=null}
- push(m);$("inp").value="";renderChips();renderList();run(c);
+ postUser(m);
 }
 
 /* Фото */
@@ -430,28 +429,12 @@ function loadDoc(f){
   }).then(function(a){setDoc(n,a.join("\n\n"))}).catch(function(){toast("Не удалось прочитать PDF")});
  }else{var rd=new FileReader();rd.onload=function(){setDoc(n,String(rd.result))};rd.readAsText(f)}
 }
-function ph(){$("inp").placeholder=tab==="build"?"Опишите сайт или приложение":imgMode?"Опишите картинку":tool?tool.ph:"Спросить Xoro"}
+function ph(){$("inp").placeholder=tab==="build"?"Опишите сайт или приложение":"Спросить Xoro"}
 function renderChips(){
  var h="";
  if(att)h+='<span class="chip2"><img src="'+att.th+'" alt=""><button data-x="att" aria-label="Убрать">✕</button></span>';
  if(dc)h+='<span class="chip2">📄 '+esc(dc.name.slice(0,26))+'<button data-x="dc" aria-label="Убрать">✕</button></span>';
- if(tool)h+='<span class="chip2">'+esc(tool.n)+'<button data-x="tool" aria-label="Убрать">✕</button></span>';
- if(imgMode)h+='<span class="chip2">🎨 Картинка<button data-x="img" aria-label="Убрать">✕</button></span>';
- if((cfg.md||0)>0)h+='<span class="chip2">Режим: '+esc(MD[cfg.md].n)+'<button data-x="md" aria-label="Убрать">✕</button></span>';
  $("attach").innerHTML=h;ph();sync();
-}
-function renderPM(){
- function rw(items,sel,attr){return'<div class="rw">'+items.map(function(n,i){return'<button '+attr+'="'+i+'" class="'+(sel===i?"on":"")+'">'+n+'</button>'}).join("")+'</div>'}
- $("pm").innerHTML='<div class="mh">ДОБАВИТЬ</div><div class="rw"><button data-pm="file">🖼 Фото</button><button data-pm="cam">📷 Камера</button><button data-pm="doc">📄 PDF или документ</button><button data-pm="img" class="'+(imgMode?"on":"")+'">🎨 Создать картинку</button></div>'+
- '<div class="mh">РЕЖИМ</div>'+rw(MD.map(function(x){return x.n}),cfg.md||0,"data-md")+
- '<div class="mh">ПЕРСОНАЖ</div>'+rw(CH.map(function(x){return x.n}),cfg.ch||0,"data-ch")+
- '<div class="mh">ФОРМАЛЬНОСТЬ</div>'+rw(FM.map(function(x){return x.n}),cfg.fm||0,"data-fm")+
- '<div class="mh">ИНСТРУМЕНТЫ</div><div class="rw">'+TL.map(function(x){return'<button data-tl="'+x.id+'" class="'+(tool&&tool.id===x.id?"on":"")+'">'+x.n+'</button>'}).join("")+'</div>'+
- '<div class="mh">ПАМЯТЬ И ТОЧНОСТЬ</div><div class="rw"><button data-pm="mem">🧠 Запомнить</button><button data-pm="memlist">Моя память ('+(cfg.mem||[]).length+')</button><button data-pm="ah" class="'+(cfg.ah?"on":"")+'">Показывать уверенность</button></div>';
-}
-function memModal(){
- var m=cfg.mem||[];
- modal('<h3>Моя память</h3>'+(m.length?m.map(function(x,i){return'<p style="display:flex;gap:8px;align-items:center;color:var(--text)"><span style="flex:1">'+esc(x)+'</span><button data-a="memdel" data-i="'+i+'" style="color:#ff6b6b;font-weight:800;padding:4px 8px">✕</button></p>'}).join(""):'<p>Пока пусто. Напишите «запомни, что …» или выберите «Запомнить» в меню «+».</p>')+'<button class="btn g" data-a="close">Закрыть</button>');
 }
 
 /* Голос */
@@ -467,10 +450,97 @@ function dictate(){
  $("mic").style.color="var(--acc)";toast("Слушаю…");
  try{rec.start()}catch(x){rec=null;$("mic").style.color=""}
 }
-function speak(t){
- if(!window.speechSynthesis){toast("Озвучка не поддерживается");return}
- if(speechSynthesis.speaking){speechSynthesis.cancel();return}
- var u=new SpeechSynthesisUtterance(t.replace(/[*#`_]/g,""));u.lang=/[а-яё]/i.test(t)?"ru-RU":"en-US";speechSynthesis.speak(u);
+function plainText(t){return t.replace(/```[\s\S]*?```/g," ").replace(/\[([^\]]+)\]\([^)]*\)/g,"$1").replace(/[`*#>_|]/g,"").replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}]/gu,"").replace(/\s+/g," ").trim()}
+function pickVoice(lang){
+ if(!window.speechSynthesis)return null;
+ var vs=speechSynthesis.getVoices(),sel=cfg.voice&&vs.filter(function(v){return v.voiceURI===cfg.voice})[0];
+ if(sel&&sel.lang.slice(0,2)===lang.slice(0,2))return sel;
+ return vs.filter(function(v){return v.lang.slice(0,2)===lang.slice(0,2)})[0]||null;
+}
+function ttsSay(text,done){
+ if(!window.speechSynthesis){toast("Озвучка не поддерживается");if(done)done();return}
+ speechSynthesis.cancel();
+ var p=plainText(text);if(!p){if(done)done();return}
+ var lang=/[а-яё]/i.test(p)?"ru-RU":"en-US";
+ var parts=p.match(/[^.!?…]+[.!?…]*/g)||[p],chunks=[],cu="";
+ parts.forEach(function(x){if((cu+x).length>180){if(cu)chunks.push(cu);cu=x}else cu+=x});if(cu)chunks.push(cu);
+ var v=pickVoice(lang);
+ chunks.forEach(function(ch,i){
+  var u=new SpeechSynthesisUtterance(ch.trim());u.lang=v?v.lang:lang;if(v)u.voice=v;u.rate=cfg.vrate||1;
+  if(i===chunks.length-1){u.onend=function(){if(done)done()};u.onerror=function(){if(done)done()}}
+  speechSynthesis.speak(u);
+ });
+}
+function speak(t){if(window.speechSynthesis&&speechSynthesis.speaking){speechSynthesis.cancel();return}ttsSay(t)}
+function SRC(){return window.SpeechRecognition||window.webkitSpeechRecognition}
+function voiceLang(){var l=navigator.language||"ru-RU";return/^ru/.test(l)?"ru-RU":l}
+function vState(s,t){vm.st=s;$("vo").setAttribute("data-s",s);$("vst").textContent=t}
+function voiceOpen(){
+ if(vm.on)return;
+ if(!SRC()&&!(navigator.mediaDevices&&window.MediaRecorder)){toast("Голосовой режим не поддерживается в этом браузере");return}
+ setTab("ask");vm.on=true;vm.idle=0;$("vo").classList.add("open");$("vtx").textContent="";voiceListen();
+}
+function voiceClose(){
+ vm.on=false;vm.tok++;
+ try{if(vm.sr)vm.sr.abort()}catch(e){}vm.sr=null;
+ try{if(vm.mr&&vm.mr.state==="recording"){vm.mr.onstop=null;vm.mr.stop()}}catch(e){}
+ if(vm.stream){vm.stream.getTracks().forEach(function(t){t.stop()});vm.stream=null}
+ clearTimeout(vm.tm);
+ try{if(window.speechSynthesis)speechSynthesis.cancel()}catch(e){}
+ $("vo").classList.remove("open");
+}
+function voiceListen(){
+ if(!vm.on||vm.sr)return;
+ var SR=SRC();
+ if(!SR){vState("wait","Нажми на шар и говори");$("vhint").textContent="Нажми ещё раз, чтобы отправить";return}
+ vState("listen","Слушаю…");$("vtx").textContent="";$("vhint").textContent="Нажми на шар, чтобы отправить сразу";
+ var r=new SR(),got="";r.lang=voiceLang();r.interimResults=true;r.continuous=false;
+ r.onresult=function(e){var s="";for(var i=0;i<e.results.length;i++)s+=e.results[i][0].transcript;got=s;$("vtx").textContent=s};
+ r.onerror=function(e){if(e.error==="not-allowed"||e.error==="service-not-allowed"){toast("Разрешите доступ к микрофону");voiceClose()}};
+ r.onend=function(){
+  vm.sr=null;if(!vm.on||vm.st!=="listen")return;
+  if(got.trim()){vm.idle=0;voiceSend(got.trim())}
+  else if(++vm.idle<3)setTimeout(voiceListen,250);
+  else{vState("wait","Нажми на шар, чтобы продолжить");vm.idle=0}
+ };
+ vm.sr=r;try{r.start()}catch(x){vm.sr=null}
+}
+function voiceSend(t){if(busy)return;vState("think",stTxt);postUser({r:"u",t:t})}
+function voiceSendAudio(b64){if(busy)return;vState("think",stTxt);postUser({r:"u",t:"🎤 Голосовое сообщение",au:b64})}
+function voiceSpeak(t){
+ vState("speak","Говорю…");$("vtx").textContent=plainText(t).slice(0,140);$("vhint").textContent="Нажми на шар, чтобы перебить";
+ var tok=++vm.tok;ttsSay(t,function(){if(tok===vm.tok&&vm.on)voiceListen()});
+}
+function voiceAfter(res){
+ if(!vm.on)return;
+ if(res.e){vState("listen","Не получилось, попробуй ещё раз");setTimeout(voiceListen,1400);return}
+ voiceSpeak(res.t);
+}
+function encodeWav(a){
+ var rate=16000,len=Math.floor(a.duration*rate),ch=a.getChannelData(0),buf=new ArrayBuffer(44+len*2),v=new DataView(buf),i;
+ function w(o,s){for(var k=0;k<s.length;k++)v.setUint8(o+k,s.charCodeAt(k))}
+ w(0,"RIFF");v.setUint32(4,36+len*2,true);w(8,"WAVEfmt ");v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,rate,true);v.setUint32(28,rate*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);w(36,"data");v.setUint32(40,len*2,true);
+ for(i=0;i<len;i++){var x=ch[Math.floor(i*a.sampleRate/rate)]||0;x=Math.max(-1,Math.min(1,x));v.setInt16(44+i*2,x<0?x*32768:x*32767,true)}
+ var u8=new Uint8Array(buf),bin="";for(i=0;i<u8.length;i+=0x8000)bin+=String.fromCharCode.apply(null,u8.subarray(i,i+0x8000));
+ return btoa(bin);
+}
+function toWav(blob){return blob.arrayBuffer().then(function(buf){var ac=new(window.AudioContext||window.webkitAudioContext)();return ac.decodeAudioData(buf).then(function(a){try{ac.close()}catch(e){}return encodeWav(a)})})}
+function recStart(){
+ navigator.mediaDevices.getUserMedia({audio:true}).then(function(st){
+  vm.stream=st;vm.chunks=[];var mr=new MediaRecorder(st);vm.mr=mr;
+  mr.ondataavailable=function(e){if(e.data&&e.data.size)vm.chunks.push(e.data)};
+  mr.onstop=function(){
+   st.getTracks().forEach(function(t){t.stop()});vm.stream=null;
+   toWav(new Blob(vm.chunks,{type:mr.mimeType||"audio/webm"})).then(function(w){voiceSendAudio(w)},function(){toast("Не удалось обработать запись");vState("wait","Нажми на шар и говори")});
+  };
+  mr.start();vState("listen","Записываю…");$("vhint").textContent="Нажми на шар, чтобы отправить";
+  vm.tm=setTimeout(function(){if(vm.mr&&vm.mr.state==="recording")vm.mr.stop()},60000);
+ }).catch(function(){toast("Нет доступа к микрофону");voiceClose()});
+}
+function voiceModal(){
+ var vs=window.speechSynthesis?speechSynthesis.getVoices().filter(function(v){return/^(ru|kk|en|uk|tr)/i.test(v.lang)}).slice(0,30):[];
+ var rates=[[0.85,"Медленнее"],[1,"Обычная"],[1.2,"Быстрее"]];
+ modal('<h3>Голос Xoro</h3><label>СКОРОСТЬ РЕЧИ</label><div class="seg" style="margin-top:0">'+rates.map(function(r){return'<button data-vr="'+r[0]+'" class="'+((cfg.vrate||1)===r[0]?"on":"")+'">'+r[1]+'</button>'}).join("")+'</div><label>ГОЛОС</label>'+(vs.length?vs.map(function(v){return'<button class="btn g" data-v="'+esc(v.voiceURI)+'" style="text-align:left;margin-top:6px">'+(cfg.voice===v.voiceURI?"✓ ":"")+esc(v.name)+' <small style="color:var(--mute)">'+esc(v.lang)+'</small></button>'}).join(""):'<p>Голоса не найдены. На Android: Настройки, Язык и ввод, Синтез речи, загрузите голосовые данные.</p>')+'<button class="btn" data-a="close">Готово</button>');
 }
 function copyText(t){
  function fb(){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");toast("Скопировано")}catch(e){toast("Не удалось скопировать")}a.remove()}
@@ -480,9 +550,10 @@ function copyText(t){
 /* Картинки в чате */
 function imgUrl(x){return"https://image.pollinations.ai/prompt/"+encodeURIComponent(x.e)+"?width=1024&height=1024&seed="+x.s+"&nologo=true&model=flux"}
 function imgChat(c,t){
- c.msgs.push({r:"a",t:"…"});busy=true;sync();render();
+ stStart("g");c.msgs.push({r:"a",t:"…"});busy=true;sync();render();
  var tr=/[а-яё]/i.test(t)?callAI([{role:"system",content:"Translate the user's image description into a concise vivid English prompt for an image generator. Output only the prompt, nothing else."},{role:"user",content:t}],200).catch(function(){return t}):Promise.resolve(t);
  tr.then(function(en){
+  stStop();
   c.msgs[c.msgs.length-1]={r:"a",t:"",img:{e:(en||t).replace(/["\n]/g," ").trim(),s:Math.floor(Math.random()*1e6)}};
   busy=false;sync();save();render();
  });
@@ -495,14 +566,14 @@ function dl(t){var l=document.createElement("a");l.href=URL.createObjectURL(new 
 var lastBuild="";
 function doBuild(p){
  $("bnote").style.display="none";
- $("bres").innerHTML='<div class="bcard"><div class="ty"><i class="lg">'+logo()+'</i><span>Xoro собирает страницу…</span></div></div>';
+ stStart("b");$("bres").innerHTML='<div class="bcard"><div class="ty"><i class="lg">'+logo()+'</i><span>'+esc(stTxt)+'</span></div></div>';
  var sys="Ты Xoro Builder. Создай ОДИН самодостаточный HTML-файл (HTML, CSS и JavaScript внутри) по описанию пользователя. Без внешних библиотек и картинок по ссылкам, современный аккуратный дизайн, адаптивно для телефона, весь текст на языке пользователя. Верни ТОЛЬКО код в блоке ```html, без пояснений. Файл должен быть компактным.";
- callAI([{role:"system",content:sys},{role:"user",content:p}],1500).then(function(t){
+ callAI([{role:"system",content:sys},{role:"user",content:p}],3500,M[cfg.mq].tier).then(function(t){stStop();
   var m=t.match(/```(?:html)?\n([\s\S]*?)(```|$)/);lastBuild=(m?m[1]:t).trim();
   if(!lastBuild)throw new Error("empty");
   $("bres").innerHTML='<div class="bcard"><iframe sandbox="allow-scripts" title="Предпросмотр"></iframe><div class="ia"><button data-b="copy">Копировать код</button><button data-b="open">Открыть отдельно</button></div></div>';
   $("bres").querySelector("iframe").srcdoc=lastBuild;
- }).catch(function(e){$("bres").innerHTML='<div class="bcard"><p class="note">'+esc(e.status?errText(e):"Не получилось собрать страницу. Попробуйте описать проще.")+'</p></div>'});
+ }).catch(function(e){stStop();$("bres").innerHTML='<div class="bcard"><p class="note">'+esc(e.status?errText(e):"Не получилось собрать страницу. Попробуйте описать проще.")+'</p></div>'});
 }
 $("bres").onclick=function(e){
  var b=e.target.getAttribute("data-b");if(!b)return;
@@ -512,10 +583,10 @@ $("bres").onclick=function(e){
 
 /* Модель и вкладки */
 function modelUI(){
- var m=M[cfg.mi];
- $("mbtn").innerHTML='<span class="dot" style="background:linear-gradient(135deg,'+m.c+')">'+m.ic+'</span>Xoro <b>'+m.n+'</b><svg class="i" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M6 9l6 6 6-6"/></svg>';
+ var m=M[cfg.mq];
+ $("mbtn").innerHTML='<span class="dot">'+m.ic+'</span>Xoro <b>'+m.n+'</b><svg class="i" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M6 9l6 6 6-6"/></svg>';
  $("menu").innerHTML='<div class="mh">ВЫБЕРИТЕ МОДЕЛЬ</div>'+M.map(function(x,i){
-  return'<button class="mc'+(i===cfg.mi?' on':'')+'" data-m="'+i+'"><span class="dot" style="background:linear-gradient(135deg,'+x.c+')">'+x.ic+'</span><span class="tx"><b>'+x.n+'</b><small>'+x.d+'</small></span></button>'}).join("");
+  return'<button class="mc'+(i===cfg.mq?' on':'')+'" data-m="'+i+'"><span class="dot">'+x.ic+'</span><span class="tx"><b>'+x.n+'</b><small>'+x.d+'</small></span></button>'}).join("");
 }
 function setTab(t){
  tab=t;Array.prototype.forEach.call($("tabs").children,function(b){b.classList.toggle("on",b.getAttribute("data-t")===t)});
@@ -530,7 +601,7 @@ function modal(h){$("mod").innerHTML='<div class="card">'+h+'</div>';$("mod").cl
 function closeModal(){$("mod").classList.remove("open")}
 function seg(key,opts,curv){return'<div class="seg" style="margin-top:0">'+opts.map(function(o){return'<button data-set="'+key+':'+o[0]+'" class="'+(String(curv)===String(o[0])?'on':'')+'">'+o[1]+'</button>'}).join("")+'</div>'}
 function settings(){
- modal('<h3>Настройки</h3><label>ПОЧТА</label><p style="margin:0;font-weight:700;color:var(--text)">'+esc(user==="guest"?"Гостевой режим":user)+'</p><label>ИМЯ В ПРИВЕТСТВИИ</label><input id="f_name" maxlength="24" value="'+esc(cfg.name)+'"><button class="btn" data-a="save">Сохранить</button><button class="btn g" data-a="out">'+(user==="guest"?"Войти или зарегистрироваться":"Выйти из аккаунта")+'</button><button class="btn g" data-a="close">Закрыть</button>');
+ modal('<h3>Настройки</h3><label>АККАУНТ</label><p style="margin:0;font-weight:700;color:var(--text)">'+esc(acct())+'</p><label>ИМЯ В ПРИВЕТСТВИИ</label><input id="f_name" maxlength="24" value="'+esc(cfg.name)+'"><button class="btn g" data-a="voice">🎙 Голос ответов</button><button class="btn" data-a="save">Сохранить</button>'+(TG?"":'<button class="btn g" data-a="out">'+(user==="guest"?"Войти или зарегистрироваться":"Выйти из аккаунта")+'</button>')+'<button class="btn g" data-a="close">Закрыть</button>');
 }
 function niceName(e){var l=String(e).split("@")[0].replace(/[0-9]+$/,"");var p=l.split(/[._\-+]+/).filter(Boolean);if(!p.length)p=[String(e).split("@")[0]];return p.map(function(w){return w.charAt(0).toUpperCase()+w.slice(1)}).join(" ").slice(0,24)}
 $("mod").onclick=function(e){
@@ -542,7 +613,12 @@ $("mod").onclick=function(e){
   if(k==="lvl")modelUI();
   applyLook();saveCfg();Array.prototype.forEach.call(t.parentNode.children,function(b){b.classList.toggle("on",b===t)});return;
  }
+ var vb=t.closest("[data-v]");
+ if(vb){cfg.voice=vb.getAttribute("data-v");saveCfg();voiceModal();var vv=window.speechSynthesis?speechSynthesis.getVoices().filter(function(x){return x.voiceURI===cfg.voice})[0]:null;if(vv){speechSynthesis.cancel();var uu=new SpeechSynthesisUtterance(/^ru/i.test(vv.lang)?"Привет! Я Xoro. Так я буду говорить.":"Hi! I am Xoro. This is how I sound.");uu.voice=vv;uu.lang=vv.lang;uu.rate=cfg.vrate||1;speechSynthesis.speak(uu)}return}
+ var vr=t.closest("[data-vr]");
+ if(vr){cfg.vrate=+vr.getAttribute("data-vr");saveCfg();voiceModal();return}
  var a=t.getAttribute("data-a");if(!a)return;
+ if(a==="voice"){voiceModal();return}
  if(a==="save"){cfg.name=$("f_name").value.trim()||(user==="guest"?"":niceName(user));saveCfg();profile();render();closeModal();toast("Сохранено")}
  if(a==="export"){
   var data=JSON.stringify(chats.filter(function(c){return !c.priv&&c.msgs.length}),null,1);
@@ -551,7 +627,6 @@ $("mod").onclick=function(e){
  if(a==="clear"){if(t.getAttribute("data-s")!=="1"){t.setAttribute("data-s","1");t.textContent="Нажмите ещё раз для подтверждения";return}chats=[];ls("xoro_chats_"+user,"[]");newChat(false);closeModal();toast("История очищена")}
  if(a==="out")logout();
  if(a==="close")closeModal();
- if(a==="memdel"){cfg.mem.splice(+t.getAttribute("data-i"),1);saveCfg();memModal();renderPM();return}
  var c=find(aid);
  if(a==="pin"&&c){c.pin=!c.pin;save();renderList();closeModal()}
  if(a==="del"&&c){chats=chats.filter(function(x){return x.id!==aid});save();if(cur===aid)newChat(false);renderList();closeModal()}
@@ -591,11 +666,11 @@ function gLogin(){
  }).catch(function(e){er.textContent=e.code==="auth/popup-closed-by-user"?"Окно входа закрыто":e.code==="auth/unauthorized-domain"?"Этот адрес сайта не добавлен в Firebase":"Ошибка входа: "+(e.code||e.message)})}catch(x){er.textContent="Google-вход не подключён"}
 }
 function start(u){
- if(job)clearInterval(job.timer);job=null;user=u;ghost=false;busy=false;att=null;dc=null;tool=null;imgMode=false;
+ if(job)clearInterval(job.timer);job=null;user=u;ghost=false;busy=false;att=null;dc=null;if(vm.on)voiceClose();stStop();
  cfg=JSON.parse(JSON.stringify(DEF));
  try{var s=JSON.parse(ls("xoro_cfg_"+u)||"{}");for(var k in s)cfg[k]=s[k]}catch(e){}
  if(!cfg.name&&u!=="guest")cfg.name=ls("xoro_gn_"+u)||niceName(u);
- if(!M[cfg.mi])cfg.mi=0;
+ cfg.mq=0;
  try{chats=JSON.parse(ls("xoro_chats_"+u)||"[]")}catch(e){chats=[]}
  chats.forEach(function(c){c.msgs=c.msgs.filter(function(m){return !m.s&&m.t!=="…"})});
  $("ghost").style.background="";$("ghost").style.color="";
@@ -625,45 +700,47 @@ $("ghost").onclick=function(){setGhost(!ghost);setTab("ask")};
 $("mbtn").onclick=function(e){e.stopPropagation();$("pm").classList.remove("open");$("menu").classList.toggle("open")};
 $("menu").onclick=function(e){
  e.stopPropagation();
- var m=e.target.closest("[data-m]");if(m){cfg.mi=+m.getAttribute("data-m");saveCfg();modelUI();$("menu").classList.remove("open");toast("Модель: "+M[cfg.mi].n);return}
- var l=e.target.closest("[data-l]");if(l){cfg.lvl=l.getAttribute("data-l");saveCfg();modelUI()}
+ var m=e.target.closest("[data-m]");if(m){cfg.mq=+m.getAttribute("data-m");saveCfg();modelUI();$("menu").classList.remove("open");toast("Модель: "+M[cfg.mq].n);return}
 };
 document.addEventListener("click",function(){$("menu").classList.remove("open");$("pm").classList.remove("open")});
-$("plus").onclick=function(e){e.stopPropagation();$("menu").classList.remove("open");renderPM();$("pm").classList.toggle("open")};
+$("plus").onclick=function(e){e.stopPropagation();$("menu").classList.remove("open");$("pm").classList.toggle("open")};
 $("pm").onclick=function(e){
  e.stopPropagation();
  var b=e.target.closest("button");if(!b)return;
- var a=b.getAttribute("data-pm"),keep=false;
+ var a=b.getAttribute("data-pm");
  if(a==="file")$("file").click();
- else if(a==="cam")$("cam").click();
- else if(a==="doc")$("doc").click();
- else if(a==="img"){imgMode=!imgMode;tool=null;toast(imgMode?"Опишите картинку и отправьте":"Режим картинок выключен")}
- else if(a==="mem"){tool={id:"mem",n:"🧠 Запомнить",ph:"Что мне запомнить?"};imgMode=false}
- else if(a==="memlist")memModal();
- else if(a==="ah"){cfg.ah=!cfg.ah;saveCfg();keep=true}
- else if(b.hasAttribute("data-md")){cfg.md=+b.getAttribute("data-md");saveCfg();keep=true}
- else if(b.hasAttribute("data-ch")){cfg.ch=+b.getAttribute("data-ch");saveCfg();keep=true;toast("Персонаж: "+CH[cfg.ch].n)}
- else if(b.hasAttribute("data-fm")){cfg.fm=+b.getAttribute("data-fm");saveCfg();keep=true}
- else if(b.hasAttribute("data-tl")){var id=b.getAttribute("data-tl");tool=TL.filter(function(x){return x.id===id})[0];imgMode=false}
- renderChips();
- if(keep)renderPM();else $("pm").classList.remove("open");
+ if(a==="cam")$("cam").click();
+ if(a==="doc")$("doc").click();
+ $("pm").classList.remove("open");
 };
 $("file").onchange=function(){loadImg(this.files[0]);this.value=""};
 $("cam").onchange=function(){loadImg(this.files[0]);this.value=""};
 $("doc").onchange=function(){loadDoc(this.files[0]);this.value=""};
 $("attach").onclick=function(e){
  var x=e.target.closest("[data-x]");if(!x)return;var k=x.getAttribute("data-x");
- if(k==="att")att=null;if(k==="dc")dc=null;if(k==="tool")tool=null;if(k==="img")imgMode=false;if(k==="md"){cfg.md=0;saveCfg()}
+ if(k==="att")att=null;if(k==="dc")dc=null;
  renderChips();
 };
-$("mic").onclick=dictate;
+$("mic").onclick=function(){if(SRC())dictate();else voiceOpen()};
+$("vclose").onclick=voiceClose;
+$("vvoice").onclick=voiceModal;
+$("vorb").onclick=function(){
+ if(vm.st==="speak"){vm.tok++;try{speechSynthesis.cancel()}catch(e){}voiceListen();return}
+ if(SRC()){
+  if(vm.st==="wait")voiceListen();
+  else if(vm.st==="listen"&&vm.sr)vm.sr.stop();
+  return;
+ }
+ if(vm.st==="wait")recStart();
+ else if(vm.st==="listen"&&vm.mr&&vm.mr.state==="recording"){clearTimeout(vm.tm);vm.mr.stop()}
+};
 $("main").onclick=function(e){
  var p=e.target.getAttribute("data-p");if(p){$("inp").value=p;sync();send();return}
  var c=find(cur),b;
  if(b=e.target.closest("[data-cp]"))copyText(c.msgs[+b.getAttribute("data-cp")].t);
  if(b=e.target.closest("[data-sp]"))speak(c.msgs[+b.getAttribute("data-sp")].t);
  if(b=e.target.closest("[data-dl]"))dl(c.msgs[+b.getAttribute("data-dl")].t);
- if(b=e.target.closest("[data-io]"))window.open(imgUrl(c.msgs[+b.getAttribute("data-io")].img),"_blank");
+ if(b=e.target.closest("[data-io]"))openUrl(imgUrl(c.msgs[+b.getAttribute("data-io")].img));
  if(b=e.target.closest("[data-ia]")){var im=c.msgs[+b.getAttribute("data-ia")].img;im.s=Math.floor(Math.random()*1e6);save();render()}
  if(e.target.closest("[data-rt]"))retry();
 };
@@ -671,7 +748,11 @@ $("tabs").onclick=function(e){var t=e.target.getAttribute("data-t");if(t)setTab(
 
 try{if(typeof firebase!=="undefined"&&FB_CFG.apiKey){firebase.initializeApp(FB_CFG);gReady=true}}catch(e){}
 Array.prototype.forEach.call(document.querySelectorAll("[data-logo]"),function(e){e.innerHTML=logo()});
-var sess=ls("xoro_session");if(sess)start(sess);else showAuth("login");
+if(TG){
+ try{TG.ready();TG.expand();TG.setHeaderColor("#000000");TG.setBackgroundColor("#000000")}catch(e){}
+ var tu=TG.initDataUnsafe&&TG.initDataUnsafe.user;
+ if(tu){var tk="tg"+tu.id;tgun=tu.username||"";ls("xoro_gn_"+tk,tu.first_name||"");if(tu.photo_url)ls("xoro_ph_"+tk,tu.photo_url);start(tk)}else start("guest");
+}else{var sess=ls("xoro_session");if(sess)start(sess);else showAuth("login")}
 })();
 </script>
 </body>
