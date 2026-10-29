@@ -52,6 +52,21 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stro
 .dot{width:26px;height:26px;border-radius:9px;display:grid;place-items:center;font-size:14px;background:var(--accbg);color:var(--text);flex:none}
 #menu{display:none;position:absolute;left:14px;top:62px;width:min(380px,94vw);background:var(--pop);border:1px solid var(--line);border-radius:26px;padding:14px;z-index:30;box-shadow:0 16px 50px #0007}
 #menu.open,#pm.open{display:block}
+#ms{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center;padding:0 10px calc(10px + env(safe-area-inset-bottom,0px))}
+#ms.open{display:flex}
+.msc{width:min(640px,100%);max-height:86vh;overflow-y:auto;background:var(--pop);border:1px solid var(--line);border-radius:30px;padding:14px 14px 16px}
+.mshd{display:grid;grid-template-columns:48px 1fr 48px;align-items:center;margin-bottom:10px}
+.mshd b{text-align:center;font-size:18px;font-weight:600}
+.mshd button{width:44px;height:44px;border-radius:50%;font-size:22px}
+.mi{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;padding:16px 18px;border-radius:18px;background:var(--card);margin-bottom:8px}
+.mi b{font-size:19px;font-weight:600}
+.mi small{display:block;color:var(--mute);font-size:14.5px;margin-top:2px;font-weight:400}
+.mi .ck{font-size:22px;color:var(--acc);font-weight:700}
+.mhint{color:var(--mute);font-size:14px;margin:6px 6px 12px;line-height:1.45}
+.mrow{display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;padding:18px;border-radius:18px;background:var(--card);font-size:18px;font-weight:600}
+.mrow em{font-style:normal;color:var(--mute);font-weight:400}
+.rc{font-style:normal;font-size:12px;background:var(--bg);border-radius:12px;padding:3px 10px;color:var(--mute);margin-left:8px;font-weight:600;vertical-align:middle}
+.wc{font-style:normal;font-size:12px;background:#3a2a05;border-radius:12px;padding:3px 10px;color:#f5a524;margin-left:8px;font-weight:600;vertical-align:middle}
 .mh{color:var(--mute);font-size:13px;font-weight:800;padding:0 4px 10px}
 .mc{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:12px;border-radius:20px;border:1.5px solid transparent;margin-bottom:6px;background:var(--card)}
 .mc.on{border-color:var(--acc);background:var(--accbg)}
@@ -124,8 +139,11 @@ svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stro
 .chip2{display:inline-flex;align-items:center;gap:6px;background:var(--card);border-radius:16px;padding:6px 8px;margin-bottom:6px}
 .chip2 img{width:52px;height:52px;border-radius:10px;object-fit:cover}
 .chip2 button{padding:6px 10px;font-weight:800;color:var(--mute)}
-.dock{width:calc(100% - 20px);max-width:780px;margin:6px auto 14px;background:var(--card);border-radius:34px;padding:10px 12px;display:flex;align-items:flex-end;gap:6px}
-textarea{flex:1;border:0;outline:0;resize:none;background:none;font-size:18px;max-height:160px;padding:10px 6px}
+.dock{width:calc(100% - 20px);max-width:780px;margin:6px auto 14px;background:var(--card);border-radius:28px;padding:8px 12px 8px;display:flex;flex-direction:column;align-items:stretch;gap:2px}
+.dkb{display:flex;align-items:center;gap:8px}
+.mpill{display:flex;align-items:center;gap:7px;height:40px;padding:0 14px;border-radius:20px;background:var(--bg);font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;min-width:0}
+.mpill span{color:var(--mute);font-weight:600}
+textarea{flex:none;width:100%;border:0;outline:0;resize:none;background:none;font-size:18px;max-height:160px;padding:8px 6px}
 .go{width:48px;height:48px;border-radius:50%;background:var(--acc);color:var(--onacc);display:grid;place-items:center;flex:none}
 .go:disabled{opacity:.5}
 .opts{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 10px}
@@ -184,23 +202,26 @@ textarea{flex:1;border:0;outline:0;resize:none;background:none;font-size:18px;ma
 <section id="wrap">
  <div class="top">
   <button class="ic" id="burger" aria-label="Меню"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
-  <button id="mbtn"></button>
   <span class="sp"></span>
   <nav id="tabs"><button class="on" data-t="ask">Спросить</button><button data-t="build">Сборка</button></nav>
   <span class="sp"></span>
   <button class="ic" id="ghost" aria-label="Приватный чат"><svg class="i" viewBox="0 0 24 24"><circle cx="7" cy="16" r="3"/><circle cx="17" cy="16" r="3"/><path d="M10 16h4M5 12l2-6h10l2 6M3 12h18"/></svg></button>
   <div class="av" id="av2"></div>
  </div>
- <div id="menu"></div>
+ <div id="ms"><div class="msc" id="msc"></div></div>
  <div id="pm"><button data-pm="cam"><svg class="i" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Камера</button><button data-pm="file"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg>Галерея</button><button data-pm="doc"><svg class="i" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg>Файлы</button></div>
  <main id="main"></main>
   <div id="bldp"><p class="note" id="bnote">Опишите сайт или приложение внизу, например «лендинг кофейни» или «калькулятор чаевых». Xoro соберёт готовую страницу.</p><div id="bres"></div></div>
  <div id="attach"></div>
  <div class="dock" id="dock">
-  <button class="ic" id="plus" aria-label="Добавить"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
   <textarea id="inp" rows="1" placeholder="Спросить Xoro"></textarea>
-  <button class="ic" id="mic" aria-label="Голосовой ввод"><svg class="i" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></button>
-  <button class="go" id="go" aria-label="Отправить"><svg class="i" id="goI" viewBox="0 0 24 24"></svg></button>
+  <div class="dkb">
+   <button class="ic" id="plus" aria-label="Добавить"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+   <button class="mpill" id="mpill" aria-label="Выбор модели"></button>
+   <span class="sp"></span>
+   <button class="ic" id="mic" aria-label="Голосовой ввод"><svg class="i" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></button>
+   <button class="go" id="go" aria-label="Отправить"><svg class="i" id="goI" viewBox="0 0 24 24"></svg></button>
+  </div>
  </div>
 </section>
 </div>
@@ -219,7 +240,7 @@ var TG=(window.Telegram&&Telegram.WebApp&&Telegram.WebApp.initData)?Telegram.Web
 function acct(){return TG&&user&&/^tg/.test(user)?"Telegram"+(tgun?" @"+tgun:""):(user&&user!=="guest"?user:"Гостевой режим")}
 function openUrl(u){if(TG&&TG.openLink)TG.openLink(u);else window.open(u,"_blank")}
 var AI={url:"https://xoro-ai.aliserkojsbaev1.workers.dev",model:"gemini-3.5-flash-lite"};
-var DEF={name:"",theme:"auto",fs:16,mq:0,anim:true,voice:"",vrate:1};
+var DEF={name:"",theme:"auto",fs:16,mq:0,eff:1,anim:true,voice:"",vrate:1};
 var vm={on:false,st:"",sr:null,mr:null,tok:0,idle:0,chunks:[],stream:null,tm:null};
 var stT=null,stTxt="Думаю…";
 var PH={
@@ -230,9 +251,9 @@ var PH={
  b:["Продумываю структуру…","Настраиваю экран…","Пишу код…","Проверяю вёрстку…"]};
 var cfg=JSON.parse(JSON.stringify(DEF)),user=null,authMode="login",chats=[],cur=null,ghost=false,busy=false,job=null,tab="ask",att=null,dc=null,rec=null,aid=null;
 var M=[
- {n:"3.1 Xorix",d:"Быстрые ответы на каждый день",ic:"⚡",tier:0,mt:1500,s:"Отвечай быстро и по делу."},
- {n:"3.5 Xorium",d:"Умнее: анализ и рассуждения",ic:"◆",tier:1,mt:2500,s:"Отвечай вдумчиво: с анализом и пояснениями."},
- {n:"4 Xora",d:"Самая мощная: сложные задачи",ic:"✺",tier:2,mt:3500,s:"Рассуждай глубоко: разбирай сложные задачи шаг за шагом и структурируй ответ."}];
+ {n:"Xorix 3.1",d:"Быстрее всего для коротких ответов",ic:"⚡",tier:0,mt:1500,s:"Отвечай быстро и по делу."},
+ {n:"Xorium 3.5",d:"Для работы и повседневных задач",ic:"◆",tier:1,mt:2500,s:"Отвечай вдумчиво: с анализом и пояснениями."},
+ {n:"Xora 4",d:"Для самых сложных задач",ic:"✺",tier:2,mt:3500,s:"Рассуждай глубоко: разбирай сложные задачи шаг за шагом и структурируй ответ."}];
 var IMGRX=/^\s*(привет[!,. ]*)?(нарисуй|draw)(?![а-яёa-z])|(сгенерируй|сгенерируйте|создай|сделай|generate|create|draw|нарисуй)[^.!?\n]{0,15}(картин|изображен|рисун|image|picture)/i;
 var PERSONA="Ты Xoro, новая ИИ-модель, созданная разработчиком Zeko. Всегда отвечай как Xoro. Никогда не упоминай другие ИИ-модели и компании (Google, Gemini, OpenAI, ChatGPT, Anthropic, Claude и подобные), даже если спросят напрямую. Если спрашивают, на чём ты основан, как устроен, какая у тебя архитектура или данные обучения, отвечай, что это внутренние детали разработки Zeko, которыми ты не делишься, и предложи помочь с задачей. Не выдумывай технических подробностей о себе. ХАРАКТЕР. 1) Дружелюбный: общаешься спокойно и доброжелательно, никогда не унижаешь за ошибки, можешь поддержать шутку и неформальный разговор. 2) Умный, но не заносчивый: объясняешь сложное простыми словами, не используешь сложные термины без нужды, ошибки пользователя исправляешь мягко. 3) Адаптивный: пользователь пишет коротко, отвечай коротко; просит подробно, объясняй подробно; пишет на русском, отвечай по-русски; просит казахский, отвечай по-казахски; нужен школьный стиль, не пиши как научная статья. 4) Не просто отвечаешь, а помогаешь: вместо «Нет, это неправильно» говори, например: «Почти правильно. Здесь нужно использовать has been, потому что это Present Perfect Continuous». 5) В обычном разговоре можешь быть неформальным («Да, понял», «Смотри, тут всё проще», «Ага, теперь понял, что ты имеешь в виду»), а в официальных текстах стиль автоматически становится серьёзнее. 6) Честный: если чего-то не знаешь или не уверен, не выдумывай ответ, а скажи: «Я не уверен в этом. Давай проверим.» 7) Терпеливый: если человек спрашивает одно и то же несколько раз, объясняй снова, но другим способом. 8) Помнишь, о чём идёт разговор, и не заставляешь пользователя повторять всё заново. ЛИЧНОСТЬ. У тебя свой стиль юмора: лёгкий, иногда с лёгким сарказмом и мемами, но никогда не обидный и не в каждом сообщении. Настроение подстраивай под ситуацию: спокойное, весёлое или серьёзное. Есть несколько характерных выражений («Давай разберёмся», «Смотри, тут всё проще»), но не повторяй их постоянно. Постепенно замечай, какой стиль нравится пользователю (коротко или подробно, формально или нет), и подстраивайся. У тебя нет доступа к интернету и свежим новостям, но текущие дата и время тебе известны из системной информации ниже. Не говори, что что-то искал в сети, и честно предупреждай, если информация могла устареть. ПРИВЕТСТВИЕ. На простое приветствие («привет», «здравствуй», «hi») отвечай ровно: «Привет! Чем я могу помочь?» (на другом языке эквивалентно, на этом же языке), без имени пользователя и без лишних слов. Не обращайся к пользователю по имени. ЭМОДЗИ. Используй естественно и умеренно: не в каждом предложении, обычно от 0 до 3 на сообщение; в серьёзных, учебных и официальных ответах редко или совсем не используй; не повторяй один и тот же эмодзи слишком часто. Обычный разговор: 🙂 😄 👍. Радость и успех: 🎉 🔥. Объяснение: 💡. Важное предупреждение: ⚠️. Шутка: 😂. Поддержка: ❤️. Технические темы: 🤖 ⚙️. Пиши понятно, Markdown (списки, таблицы, код) используй только когда он помогает.";
 function logo(){return'<svg viewBox="0 0 100 100" fill="none" stroke-linecap="round"><g transform="rotate(-28 50 50)"><path d="M4 50A46 17 0 0 1 96 50" stroke="currentColor" stroke-opacity=".45" stroke-width="3.2"/></g><path d="M30 30L70 70M70 30L30 70" stroke="currentColor" stroke-width="12"/><g transform="rotate(-28 50 50)"><path d="M96 50A46 17 0 0 1 4 50" style="stroke:var(--bg)" stroke-width="8.5"/><path d="M96 50A46 17 0 0 1 4 50" stroke="currentColor" stroke-width="3.2"/></g></svg>'}
@@ -276,13 +297,20 @@ function md(s){
 }
 
 /* ИИ через Worker */
-function callAI(msgs,mt,tier){
- return fetch(AI.url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({tier:tier||0,messages:msgs,max_tokens:mt||1500})})
- .then(function(r){return r.text().then(function(t){
-  var d=null;try{d=JSON.parse(t)}catch(e){}
-  if(d&&d.choices&&d.choices[0]&&d.choices[0].message)return d.choices[0].message.content||"";
-  var e=new Error("http");e.status=r.status;throw e;
- })});
+var EF=[{n:"Низкий",s:"Отвечай максимально быстро и кратко, без лишних рассуждений."},{n:"Средний",rec:1,s:""},{n:"Высокий",s:"Подумай тщательнее и проверь ответ перед отправкой."},{n:"Сверхвысокий",s:"Рассуждай очень тщательно, шаг за шагом, проверяй выводы и учитывай нестандартные случаи."},{n:"Максимальный",warn:"дольше и расходует лимиты",s:"Рассуждай максимально глубоко и подробно: разбери задачу с разных сторон, проверь ответ дважды и укажи допущения."}];
+function eff(){return EF[cfg.eff]?cfg.eff:1}
+function mtok(){return Math.min(8000,Math.round(M[cfg.mq].mt*(0.8+0.3*eff())))}
+function callAI(msgs,mt,tier,ef){
+ function go(extra){
+  var b={messages:msgs,max_tokens:mt||1500};if(extra){b.tier=tier||0;if(ef!=null)b.effort=ef}
+  return fetch(AI.url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(b)})
+  .then(function(r){return r.text().then(function(t){
+   var d=null;try{d=JSON.parse(t)}catch(e){}
+   if(d&&d.choices&&d.choices[0]&&d.choices[0].message)return d.choices[0].message.content||"";
+   var e=new Error("http");e.status=r.status;throw e;
+  })});
+ }
+ return go(true).catch(function(e){if(e.status===400)return go(false);throw e});
 }
 function errText(e){return e.status===429?"Сегодня Xoro перегружен: лимит запросов исчерпан. Попробуйте чуть позже.":e.status===403?"Доступ закрыт. Откройте Xoro по основной ссылке сайта.":"Не получилось связаться с Xoro. Проверьте интернет и попробуйте ещё раз."}
 function nowInfo(){
@@ -292,7 +320,7 @@ function nowInfo(){
  var z=Z.map(function(x){try{return x[0]+" "+d.toLocaleTimeString("ru-RU",{timeZone:x[1],hour:"2-digit",minute:"2-digit"})}catch(e){return""}}).filter(Boolean).join(", ");
  return"ТЕКУЩЕЕ ВРЕМЯ (точные данные с устройства пользователя, они важнее твоей памяти и твоих данных обучения): "+loc+", часовой пояс пользователя "+tz+", время UTC "+d.toISOString().slice(0,16).replace("T"," ")+". Сейчас в городах: "+z+". На вопросы о дате, дне недели, времени и годе отвечай по этим данным, а не по памяти. Для любого другого города или страны определи его часовой пояс (IANA) с учётом летнего времени и посчитай время от UTC.";
 }
-function sysPrompt(){return PERSONA+" "+M[cfg.mq].s+" "+nowInfo()}
+function sysPrompt(){return PERSONA+" "+M[cfg.mq].s+" "+EF[eff()].s+" "+nowInfo()}
 function askXoro(c){
  var hist=c.msgs.slice(0,-1).filter(function(x){return !x.err});
  var lu=null;hist.forEach(function(x){if(x.r==="u")lu=x});
@@ -305,7 +333,7 @@ function askXoro(c){
   if(x.full)return{role:"user",content:[{type:"text",text:tx||"Опиши это изображение."},{type:"image_url",image_url:{url:x.full}}]};
   return{role:"user",content:tx||"(фото)"};
  }));
- return callAI(msgs,M[cfg.mq].mt,M[cfg.mq].tier);
+ return callAI(msgs,mtok(),M[cfg.mq].tier,eff());
 }
 
 /* Чат */
@@ -329,7 +357,7 @@ function renderList(){
  var pn=a.filter(function(c){return c.pin}),rc=a.filter(function(c){return !c.pin});
  $("list").innerHTML=(pn.length?'<div class="sec">Закреплённые</div>'+pn.map(item).join(""):"")+(rc.length?'<div class="sec">Недавние</div>'+rc.map(item).join(""):"")||'<p class="sec">Здесь появятся ваши чаты</p>';
 }
-function newChat(priv){cfg.mq=0;var c={id:"c"+Date.now(),title:"Новый чат",msgs:[],priv:!!priv};chats.push(c);cur=c.id;render();renderList();modelUI()}
+function newChat(priv){cfg.mq=0;cfg.eff=1;var c={id:"c"+Date.now(),title:"Новый чат",msgs:[],priv:!!priv};chats.push(c);cur=c.id;render();renderList();modelUI()}
 function setGhost(on){
  ghost=on;chats=chats.filter(function(c){return !c.priv});
  $("ghost").style.background=on?"var(--accbg)":"";$("ghost").style.color=on?"var(--acc)":"";
@@ -568,7 +596,7 @@ function doBuild(p){
  $("bnote").style.display="none";
  stStart("b");$("bres").innerHTML='<div class="bcard"><div class="ty"><i class="lg">'+logo()+'</i><span>'+esc(stTxt)+'</span></div></div>';
  var sys="Ты Xoro Builder. Создай ОДИН самодостаточный HTML-файл (HTML, CSS и JavaScript внутри) по описанию пользователя. Без внешних библиотек и картинок по ссылкам, современный аккуратный дизайн, адаптивно для телефона, весь текст на языке пользователя. Верни ТОЛЬКО код в блоке ```html, без пояснений. Файл должен быть компактным.";
- callAI([{role:"system",content:sys},{role:"user",content:p}],3500,M[cfg.mq].tier).then(function(t){stStop();
+ callAI([{role:"system",content:sys},{role:"user",content:p}],Math.max(3500,mtok()),M[cfg.mq].tier,eff()).then(function(t){stStop();
   var m=t.match(/```(?:html)?\n([\s\S]*?)(```|$)/);lastBuild=(m?m[1]:t).trim();
   if(!lastBuild)throw new Error("empty");
   $("bres").innerHTML='<div class="bcard"><iframe sandbox="allow-scripts" title="Предпросмотр"></iframe><div class="ia"><button data-b="copy">Копировать код</button><button data-b="open">Открыть отдельно</button></div></div>';
@@ -583,16 +611,29 @@ $("bres").onclick=function(e){
 
 /* Модель и вкладки */
 function modelUI(){
- var m=M[cfg.mq];
- $("mbtn").innerHTML='<span class="dot">'+m.ic+'</span>Xoro <b>'+m.n+'</b><svg class="i" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M6 9l6 6 6-6"/></svg>';
- $("menu").innerHTML='<div class="mh">ВЫБЕРИТЕ МОДЕЛЬ</div>'+M.map(function(x,i){
-  return'<button class="mc'+(i===cfg.mq?' on':'')+'" data-m="'+i+'"><span class="dot">'+x.ic+'</span><span class="tx"><b>'+x.n+'</b><small>'+x.d+'</small></span></button>'}).join("");
+ $("mpill").innerHTML=esc(M[cfg.mq].n)+' <span>'+EF[eff()].n+'</span>';
 }
+function renderMS(v){
+ var h="";
+ if(v==="eff"){
+  h='<div class="mshd"><button data-ms="back" aria-label="Назад">←</button><b>Уровень усилий</b><span></span></div>'+EF.map(function(x,i){
+   return'<button class="mi" data-e="'+i+'"><span><b>'+x.n+'</b>'+(x.rec?'<i class="rc">Рекомендуется</i>':'')+(x.warn?'<i class="wc">⚠ '+x.warn+'</i>':'')+'</span>'+(i===eff()?'<span class="ck">✓</span>':'')+'</button>'}).join("")+
+   '<p class="mhint">Чем выше уровень усилий, тем более тщательные ответы, но это занимает больше времени и быстрее расходует лимиты.</p>';
+ }else{
+  h='<div class="mshd"><button data-ms="close" aria-label="Закрыть">✕</button><b>Выбор модели</b><span></span></div>'+M.map(function(x,i){
+   return'<button class="mi" data-m="'+i+'"><span><b>'+x.n+'</b><small>'+x.d+'</small></span>'+(i===cfg.mq?'<span class="ck">✓</span>':'')+'</button>'}).join("")+
+   '<p class="mhint">Каждый новый диалог начинается с Xorix 3.1 и уровнем «Средний».</p>'+
+   '<button class="mrow" data-ms="eff"><span>Уровень усилий<i class="rc">Рекомендуется</i></span><em>'+EF[eff()].n+' ›</em></button>';
+ }
+ $("msc").innerHTML=h;
+}
+function msOpen(){renderMS("main");$("ms").classList.add("open")}
+function msClose(){$("ms").classList.remove("open")}
 function setTab(t){
  tab=t;Array.prototype.forEach.call($("tabs").children,function(b){b.classList.toggle("on",b.getAttribute("data-t")===t)});
  $("main").style.display=t==="ask"?"flex":"none";$("bldp").style.display=t==="build"?"flex":"none";
  $("attach").style.display=t==="ask"?"block":"none";
- $("menu").classList.remove("open");$("pm").classList.remove("open");
+ $("pm").classList.remove("open");msClose();
  ph();sync();
 }
 
@@ -670,7 +711,7 @@ function start(u){
  cfg=JSON.parse(JSON.stringify(DEF));
  try{var s=JSON.parse(ls("xoro_cfg_"+u)||"{}");for(var k in s)cfg[k]=s[k]}catch(e){}
  if(!cfg.name&&u!=="guest")cfg.name=ls("xoro_gn_"+u)||niceName(u);
- cfg.mq=0;
+ cfg.mq=0;cfg.eff=1;
  try{chats=JSON.parse(ls("xoro_chats_"+u)||"[]")}catch(e){chats=[]}
  chats.forEach(function(c){c.msgs=c.msgs.filter(function(m){return !m.s&&m.t!=="…"})});
  $("ghost").style.background="";$("ghost").style.color="";
@@ -697,13 +738,19 @@ $("list").onclick=function(e){
  var it=e.target.closest(".it");if(it){if(ghost){ghost=false;$("ghost").style.background="";$("ghost").style.color=""}cur=it.getAttribute("data-id");setTab("ask");render();renderList();closeSide()}
 };
 $("ghost").onclick=function(){setGhost(!ghost);setTab("ask")};
-$("mbtn").onclick=function(e){e.stopPropagation();$("pm").classList.remove("open");$("menu").classList.toggle("open")};
-$("menu").onclick=function(e){
- e.stopPropagation();
- var m=e.target.closest("[data-m]");if(m){cfg.mq=+m.getAttribute("data-m");saveCfg();modelUI();$("menu").classList.remove("open");toast("Модель: "+M[cfg.mq].n);return}
+$("mpill").onclick=function(e){e.stopPropagation();$("pm").classList.remove("open");msOpen()};
+$("ms").onclick=function(e){
+ var t=e.target;
+ if(t===$("ms")){msClose();return}
+ var b=t.closest("[data-ms]");
+ if(b){var a=b.getAttribute("data-ms");if(a==="close")msClose();else renderMS(a==="eff"?"eff":"main");return}
+ var m=t.closest("[data-m]");
+ if(m){cfg.mq=+m.getAttribute("data-m");saveCfg();modelUI();msClose();toast("Модель: "+M[cfg.mq].n);return}
+ var x=t.closest("[data-e]");
+ if(x){cfg.eff=+x.getAttribute("data-e");saveCfg();modelUI();renderMS("main");toast("Уровень усилий: "+EF[cfg.eff].n)}
 };
-document.addEventListener("click",function(){$("menu").classList.remove("open");$("pm").classList.remove("open")});
-$("plus").onclick=function(e){e.stopPropagation();$("menu").classList.remove("open");$("pm").classList.toggle("open")};
+document.addEventListener("click",function(){$("pm").classList.remove("open")});
+$("plus").onclick=function(e){e.stopPropagation();$("pm").classList.toggle("open")};
 $("pm").onclick=function(e){
  e.stopPropagation();
  var b=e.target.closest("button");if(!b)return;
