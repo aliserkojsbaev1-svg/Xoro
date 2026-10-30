@@ -618,14 +618,23 @@ function copyText(t){
 }
 
 /* Картинки в чате */
-function imgUrl(x){return"https://image.pollinations.ai/prompt/"+encodeURIComponent(x.e)+"?width=1024&height=1024&seed="+x.s+"&nologo=true&model=flux"}
+var IMG_URL="https://xoroimg.aliserkojsbaev1.workers.dev";
+function imgUrl(x){if(x.d)return x.d;return"https://image.pollinations.ai/prompt/"+encodeURIComponent(x.e)+"?width=1024&height=1024&seed="+x.s+"&nologo=true&model=flux"}
+function imgGen(e,seed){
+ var ctl=new AbortController(),tm=setTimeout(function(){ctl.abort()},25000);
+ return fetch(IMG_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt:e,seed:seed}),signal:ctl.signal})
+ .then(function(r){return r.ok?r.json():null})
+ .then(function(j){clearTimeout(tm);return j&&j.dataURI?j.dataURI:null})
+ .catch(function(){clearTimeout(tm);return null});
+}
 function imgChat(c,t){
- stStart("g");c.msgs.push({r:"a",t:"…"});busy=true;sync();render();
+ c.msgs.push({r:"a",t:"…",ps:"img"});var idx=c.msgs.length-1;busy=true;sync();render();
  var tr=/[а-яё]/i.test(t)?callAI([{role:"system",content:"Translate the user's image description into a concise vivid English prompt for an image generator. Output only the prompt, nothing else."},{role:"user",content:t}],200).catch(function(){return t}):Promise.resolve(t);
  tr.then(function(en){
-  stStop();
-  c.msgs[c.msgs.length-1]={r:"a",t:"",img:{e:(en||t).replace(/["\n]/g," ").trim(),s:Math.floor(Math.random()*1e6)}};
-  busy=false;sync();save();render();
+  var e=(en||t).replace(/["\n]/g," ").trim(),sd=Math.floor(Math.random()*1e6);
+  return imgGen(e,sd).then(function(d){
+   c.msgs[idx]={r:"a",t:"",img:{e:e,s:sd,d:d}};busy=false;sync();save();render();
+  });
  });
 }
 $("main").addEventListener("load",function(e){var p=e.target.parentNode;if(p&&p.classList)p.classList.add("ok")},true);
@@ -830,7 +839,7 @@ $("main").onclick=function(e){
  if(b=e.target.closest("[data-sh]")){var st=c.msgs[+b.getAttribute("data-sh")].t;if(navigator.share)navigator.share({text:st}).catch(function(){});else copyText(st)}
  if(b=e.target.closest("[data-dl]"))dl(c.msgs[+b.getAttribute("data-dl")].t);
  if(b=e.target.closest("[data-io]"))openUrl(imgUrl(c.msgs[+b.getAttribute("data-io")].img));
- if(b=e.target.closest("[data-ia]")){var im=c.msgs[+b.getAttribute("data-ia")].img;im.s=Math.floor(Math.random()*1e6);save();render()}
+ if(b=e.target.closest("[data-ia]")){var im=c.msgs[+b.getAttribute("data-ia")].img;im.s=Math.floor(Math.random()*1e6);im.d=null;render();imgGen(im.e,im.s).then(function(d){im.d=d;save();render()})}
  if(e.target.closest("[data-rt]"))retry();
 };
 $("tabs").onclick=function(e){var t=e.target.getAttribute("data-t");if(t)setTab(t)};
